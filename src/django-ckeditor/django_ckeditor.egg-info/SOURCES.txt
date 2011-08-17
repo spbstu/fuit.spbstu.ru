@@ -1,0 +1,7 @@
+ckeditor/__init__.py
+ckeditor/fields.py
+ckeditor/widgets.py
+django_ckeditor.egg-info/PKG-INFO
+django_ckeditor.egg-info/SOURCES.txt
+django_ckeditor.egg-info/dependency_links.txt
+django_ckeditor.egg-info/top_level.txt

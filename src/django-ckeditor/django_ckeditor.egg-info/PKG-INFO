@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: django-ckeditor
+Version: 0.9.3
+Summary: A small Django application that makes it easy to use CKEditor for form textareas.
+Home-page: http://bitbucket.org/dwaiter/django-ckeditor/
+Author: Dumbwaiter Design
+Author-email: dev@dwaiter.com
+License: UNKNOWN
+Description: A small Django application that makes it easy to use CKEditor for form textareas.
+Platform: UNKNOWN
