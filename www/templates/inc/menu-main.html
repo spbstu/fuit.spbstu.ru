@@ -1,0 +1,12 @@
+<nav id="menu-main"  xmlns:py="http://genshi.edgewall.org/" >
+  <ul>
+    <li py:for="mi in menu"><a href="${mi['me'].url}">${mi['me'].title}</a>
+
+        <ul class="submenu">
+           <li py:for="smi in mi['children']" class="${request.path == smi['me'].url and 'current'}">
+             <a href="${smi['me'].url}">${smi['me'].title}</a>
+           </li>
+        </ul>
+    </li>
+  </ul>	
+</nav>

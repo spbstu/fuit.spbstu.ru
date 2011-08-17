@@ -1,0 +1,22 @@
+.persons {
+  }
+  .persons:after {
+    content: ".";
+    display:block;
+    clear:both;
+    height:0;
+    overflow:hidden;
+    }
+.person {
+  float:left;
+  width:30%;
+  margin-right:3%;
+  }
+  .person .photo {
+    float:right;
+    }
+    .person .photo img {
+      padding:4px;
+      border:solid 1px #CCC;
+      background:#FFF;
+      }

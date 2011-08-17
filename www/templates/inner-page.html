@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+<xi:include href="inc/head-content.html"/>
+<body>
+<div class="wrapper">
+  <xi:include href="inc/header.html"/>
+  
+  <xi:include href="inc/breadcrumbs-nav.html"/>
+   
+  <xi:include href="inc/menu-main.html"/>
+  
+  <div id="content">
+    <xi:include href="inc/${block}.html"/>
+  </div>
+  
+</div>
+
+
+<xi:include href="inc/full-menu.html"/>
+
+
+<xi:include href="inc/footer.html"/>
+
+</body>
+</html>

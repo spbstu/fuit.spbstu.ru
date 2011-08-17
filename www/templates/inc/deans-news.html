@@ -1,0 +1,6 @@
+   <section py:for="dn in deansNews"  xmlns:py="http://genshi.edgewall.org/">
+   
+    <h2>${Markup(dn.title)}</h2>
+    <p class="date"><time>${dn.publishdate.strftime("%d.%m.%Y")}</time></p>
+    <message>${Markup(dn.message)}</message>
+</section>

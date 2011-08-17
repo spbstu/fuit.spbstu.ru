@@ -1,0 +1,44 @@
+.promo-content {
+  position:relative;
+  overflow:hidden;
+  }
+  .promo-content li {
+    float:left;
+    width:100%;
+    text-align:right;
+    position:relative;
+    }
+.promo-text {
+  position:absolute;
+  top:0;
+  left:0;
+  width:24em;
+  padding:18px;
+  text-align:left;
+  background:rgba(255,255,255,.8);
+  }
+  .promo-text h2 {
+    margin-top:0;
+    margin-bottom:0.3em;
+    }
+.promo-pager {
+  margin:0 15px;
+  }
+  .promo-pager li {
+    display:inline;
+    margin:0 0px;
+    }
+  .promo-pager a {
+    display:inline-block;
+    height:17px;
+    width:17px;
+    overflow:hidden;
+    text-indent:-20px;
+    background-image:url(../i/icons/dot-gray.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    }
+    .promo-pager a:hover,
+    .promo-pager a.current {
+      background-image:url(../i/icons/dot-blue.png);
+      }

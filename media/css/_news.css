@@ -1,0 +1,23 @@
+.news {
+  
+  }
+.news .date {
+  font-size:1.0em;
+  margin-bottom:0;
+  color: #666;
+}
+
+.attention {
+  position:relative;
+  padding:18px;
+  margin:0 18px 2em 0;
+  background:#FFF;
+  }
+  .attention p {
+    margin-bottom:0;
+    }
+  .attention-content {
+    margin-bottom:1em;
+    padding-left:18px;
+    border-left:solid 9px #ffb400;
+    }

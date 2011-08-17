@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+	<xi:include href="inc/head-content.html"/>
+<body>
+<div class="wrapper">
+  <xi:include href="inc/header.html"/>
+  <section id="sub-header">
+  <xi:include href="inc/menu-main.html"/>
+    
+    
+    <xi:include href="inc/core-contacts.html"/>
+
+    <div id="promo">
+    	<div class="promo-content">
+    	  <ul>
+    	  	<li><img src="/img/promo/01.jpg" alt="" />
+    	  	  <div class="promo-text">
+    	  	  	<h2>Высокие стандарты обучения</h2>
+    	  	  	<p>Основные направления обучения студентов включают в себя теорию и технологию разработки программного обеспечения, построение и поддержку баз данных и организацию и обслуживание компьютерных сетей и систем. Важной особенностью учебного плана кафедры является углубленная математическая подготовка студентов, с акцентированием использования математических дисциплин в области информационных технологий.</p>
+    	  	  </div>
+    	  	</li>
+    	  	<li></li>
+    	  	<li></li>
+    	  	<li></li>
+    	  	<li></li>
+    	  	<li></li>
+    	  </ul>
+    	</div>
+    	<nav class="promo-pager">
+
+      	<ul>
+      		<li><a href="#">1</a></li>
+      		<li><a href="#" class="current">2</a></li>
+      		<li><a href="#">3</a></li>
+      		<li><a href="#">4</a></li>
+      		<li><a href="#">5</a></li>
+
+      		<li><a href="#">6</a></li>
+      	</ul>
+    	</nav>
+    </div>
+  </section>
+  <div id="content">
+    <article xmlns:py="http://genshi.edgewall.org/" id="global-news" class="news">
+     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
+
+        <xi:include href="inc/global-news.html"/>
+        <p><a href="news/archive/">Архив новостей и объявлений</a></p>
+    </article>
+    <article xmlns:py="http://genshi.edgewall.org/" id="deans-news" class="news">
+     <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
+       
+     <!-- <xi:include href="inc/deans-news.html"/> -->
+      <p><a href="news/archive/">Архив объявлений деканата</a></p>
+
+    </article>
+    <aside id="additional">
+    	<h2>Наши достижения</h2>
+    	<h3><a href="#">Победа в конкурсе «IT-планета»</a></h3>
+
+    	<p><img src="img/it-planet.jpg" alt="Кубок" /></p>
+    	<p>Из более 80 финалистов лишь 19-ти покорились сложнейшие оригинальные задания очного тура, прошедшего на базе СПбГУТ – соорганизатора Олимпиады в СЗФО</p>
+    </aside>
+  </div>
+</div>
+<nav id="full-menu">
+    <xi:include href="inc/full-menu.html"/>
+</nav>
+<footer>
+	<xi:include href="inc/footer.html"/>
+</footer>
+</body>
+</html>

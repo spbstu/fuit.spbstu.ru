@@ -1,0 +1,9 @@
+<nav class="breadcrumbs breadcrums-top" xmlns:py="http://genshi.edgewall.org/" >
+  <a href="/">Главная</a>
+   <py:for each="i in q">
+      <py:choose test="1">
+         <py:when test="request.path != i.url"> → <a href="${i.url}">${i.title}</a></py:when>
+         <py:otherwise> → ${i.title}</py:otherwise>
+      </py:choose>
+  </py:for>
+</nav>

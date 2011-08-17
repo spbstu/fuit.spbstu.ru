@@ -1,0 +1,8 @@
+  <article class="news"  xmlns:py="http://genshi.edgewall.org/">
+  <h1>${title}</h1>
+  <section py:for="n in news['global']" >
+    	  <h2>${Markup(n.title)}</h2>
+    	  <p class="date"><time>${n.publishdate.strftime("%d.%m.%Y")}</time></p>
+    	  <message>${Markup(n.message)}</message>
+  </section>
+  </article>
