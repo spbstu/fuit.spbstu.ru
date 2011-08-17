@@ -1,0 +1,3 @@
+[submodule "src/django-ckeditor"]
+	path = src/django-ckeditor
+	url = git://github.com/dwaiter/django-ckeditor.git
