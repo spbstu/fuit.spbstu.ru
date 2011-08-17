@@ -98,9 +98,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     # Uncomment the next line to enable the admin:
-    #'filebrowser',
-    #'tinymce',
-    'ckeditor',
+    'filebrowser',
+    'tinymce',
+    #'ckeditor',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
