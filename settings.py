@@ -59,10 +59,15 @@ MEDIA_URL ="/media/"
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = "/admin/media/"
+ADMIN_MEDIA_PREFIX = "/static/admin/"
 
-STATIC_URL = '/media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
 
+#STATICFILES_DIRS = (
+
+#    "/media/",
+#)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'jvos6#=zhmr-f()-=3=zx7rzzrvqfka)l_36w$qwsas$!m&9ty'
@@ -94,22 +99,26 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
+    
     'filebrowser',
     'tinymce',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    
     'fuit.www',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     #'django.middleware.csrf.CsrfViewMiddleware',
-#    'django.core.context_processors.static',                          
+    'django.core.context_processors.static',                          
 )
 
 #-----------
@@ -127,7 +136,7 @@ TINYMCE_DEFAULT_CONFIG = {
 #-----------
 
 
-FILEBROWSER_DIRECTORY = 'uploads/'
+FILEBROWSER_DIRECTORY = 'upload/'
 
 
 
