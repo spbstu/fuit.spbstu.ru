@@ -5,8 +5,6 @@ from django import forms#
 from tinymce.widgets import TinyMCE
 from tinymce import models as tinymce_models
 
-
-
 # Create your models here.
 class GlobalNews(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок новости')
@@ -32,7 +30,6 @@ class Pages(models.Model):
     class Meta:
         verbose_name = u"Страницу"
         verbose_name_plural = u"Страницы"
-
 
 class PageContent(models.Model):
     content = tinymce_models.HTMLField(verbose_name='Содержимое страницы')
