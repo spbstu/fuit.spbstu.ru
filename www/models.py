@@ -13,6 +13,7 @@ class GlobalNews(models.Model):
     message = tinymce_models.HTMLField(verbose_name='Текст новости')
     publishdate = models.DateField(verbose_name='Дата публикации')
     class Meta:
+        verbose_name = u"Глобальную новость"
         verbose_name_plural = u"Глобальные новости"
         
 class DeansNews(models.Model):
@@ -20,6 +21,7 @@ class DeansNews(models.Model):
     message = tinymce_models.HTMLField(verbose_name='Текст новости')
     publishdate = models.DateField(verbose_name='Дата публикации')
     class Meta:
+        verbose_name = u"Объявление деканата"
         verbose_name_plural = u"Объявления деканата"
         
 class Pages(models.Model):
@@ -27,6 +29,9 @@ class Pages(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название страницы')
     def __unicode__(self):
         return '%s %s' % (self.title, self.url)
+    class Meta:
+        verbose_name = u"Страницу"
+        verbose_name_plural = u"Страницы"
 
 
 class PageContent(models.Model):
@@ -34,3 +39,6 @@ class PageContent(models.Model):
     page = models.ForeignKey(Pages)
     def __unicode__(self):
        return '%s %s' % (self.page.title, self.page.url)
+    class Meta:
+        verbose_name = u"Содержимое страницы"
+        verbose_name_plural = u"Содержимое страниц"
