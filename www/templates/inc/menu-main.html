@@ -1,12 +1,17 @@
-<nav id="menu-main"  xmlns:py="http://genshi.edgewall.org/" >
+<nav id="menu-main">
   <ul>
-    <li py:for="mi in menu"><a href="${mi['me'].url}">${mi['me'].title}</a>
-
+      {% for mi in menu %}
+        <li><a href="{{ mi.me.url }}">{{ mi.me.title }}</a>
         <ul class="submenu">
-           <li py:for="smi in mi['children']" class="${request.path == smi['me'].url and 'current'}">
-             <a href="${smi['me'].url}">${smi['me'].title}</a>
-           </li>
+            {% for smi in mi.children %}
+            {% comment %}
+            TODO: Разобраться, как выводить каррент-класс
+            {% endcomment %}
+
+                <li class=""><a href="{{ smi.me.url }}">{{ smi.me.title }}</a></li>
+            {% endfor %}
         </ul>
-    </li>
+        </li>
+      {% endfor %}
   </ul>	
 </nav>

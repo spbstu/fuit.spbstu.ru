@@ -3,26 +3,26 @@
       xmlns:py="http://genshi.edgewall.org/"
       xmlns:xi="http://www.w3.org/2001/XInclude"
       lang="ru">
-<xi:include href="inc/head-content.html"/>
+{% include "inc/head-content.html" %}
 <body>
 <div class="wrapper">
-  <xi:include href="inc/header.html"/>
+  {% include "inc/header.html" %}
   
-  <xi:include href="inc/breadcrumbs-nav.html"/>
+  {% include "inc/breadcrumbs-nav.html" %}
    
-  <xi:include href="inc/menu-main.html"/>
+  {% include "inc/menu-main.html" %}
   
   <div id="content">
-    <xi:include href="inc/${block}.html"/>
+    {{ content }}
   </div>
   
 </div>
 
 
-<xi:include href="inc/full-menu.html"/>
+{% include "inc/full-menu.html" %}
 
 
-<xi:include href="inc/footer.html"/>
+{% include "inc/footer.html" %}
 
 </body>
 </html>

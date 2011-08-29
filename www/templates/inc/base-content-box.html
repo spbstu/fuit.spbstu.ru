@@ -1,6 +1,6 @@
 <section class="base-content-box" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
       xmlns:xi="http://www.w3.org/2001/XInclude">
-      <h1>${Markup(title)}</h1>
-      <p py:for="c in pageContent">${Markup(c.content)}</p>
+      <h1>{{ stream.title }}</h1>
+      <p py:for="c in pageContent">{{ stream.content }}</p>
 </section>

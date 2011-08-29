@@ -3,15 +3,15 @@
       xmlns:py="http://genshi.edgewall.org/"
       xmlns:xi="http://www.w3.org/2001/XInclude"
       lang="ru">
-	<xi:include href="inc/head-content.html"/>
+	{% include "inc/head-content.html" %}
 <body>
 <div class="wrapper">
-  <xi:include href="inc/header.html"/>
+  {% include "inc/header.html" %}
   <section id="sub-header">
-  <xi:include href="inc/menu-main.html"/>
+  {% include "inc/menu-main.html" %}
     
     
-    <xi:include href="inc/core-contacts.html"/>
+    {% include "inc/core-contacts.html" %}
 
     <div id="promo">
     	<div class="promo-content">
@@ -47,13 +47,13 @@
     <article xmlns:py="http://genshi.edgewall.org/" id="global-news" class="news">
      <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
 
-        <xi:include href="inc/global-news.html"/>
+        {% include "inc/global-news.html" %}
         <p><a href="news/archive/">Архив новостей и объявлений</a></p>
     </article>
     <article xmlns:py="http://genshi.edgewall.org/" id="deans-news" class="news">
      <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
-       
-     <!-- <xi:include href="inc/deans-news.html"/> -->
+
+     <!-- {% include "inc/deans-news.html" %} -->
       <p><a href="news/archive/">Архив объявлений деканата</a></p>
 
     </article>
@@ -67,10 +67,10 @@
   </div>
 </div>
 <nav id="full-menu">
-    <xi:include href="inc/full-menu.html"/>
+    {% include "inc/full-menu.html" %}
 </nav>
 <footer>
-	<xi:include href="inc/footer.html"/>
+	{% include "inc/footer.html" %}
 </footer>
 </body>
 </html>

@@ -2,19 +2,17 @@
 # Create your views here.
 
 from django.http import HttpResponse
-from genshi.template import TemplateLoader
+from django.template import Context, loader
 import fuit.settings as settings
-import genshi
 from datetime import date
 from www.models import GlobalNews
 from www.models import DeansNews
 from www.models import Pages
-from www.models import PageContent
+#from www.models import PageContent
 
 # 
 def page(request, template, block):
-   loader = TemplateLoader(settings.TEMPLATE_DIRS, auto_reload=True)
-   tmpl = loader.load(template)
+   tmpl = loader.get_template(template)
    try:
        title =  Pages.objects.get(url=request.path).title
    except Exception, e:
@@ -22,20 +20,20 @@ def page(request, template, block):
 
    content =  Pages.objects.get(url=request.path).pagecontent_set.all()
    
-   stream = tmpl.generate(  
-                            title = title,
-                            now = datenow(),
-                            news = {
+   stream = Context({
+                            'title': title,
+                            'now': datenow(),
+                            'news': {
                                    'global': GlobalNews.objects.all()[:settings.FUIT_GLOBAL_NEWS],
                                    'dean' : DeansNews.objects.all()[:settings.FUIT_DEANS_NEWS],
                             },
-                            pageContent = content,
-                            menu = _menu(request.path, '/'),
-                            q =_breadcrumbs(request.path),
-                            request = request,
-                            block = block
-                            )
-   return HttpResponse(stream.render('xhtml'))
+                            'pageContent': content,
+                            'menu': _menu(request.path, '/'),
+                            'q':_breadcrumbs(request.path),
+                            'request': request,
+                            'block': block
+                            })
+   return HttpResponse(tmpl.render(stream))
    #return HttpResponse(["%s " % mkList('/')])
 
 
