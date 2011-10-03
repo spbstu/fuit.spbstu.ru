@@ -1,6 +1,6 @@
-  <article class="news"  xmlns:py="http://genshi.edgewall.org/">
+<!--   <article class="news">
   {% if request.path != '/' %}
-      <h1>{{ title }}</h1>
+      <h1>ghhy{{ title }}</h1>
   {% endif %}
   {% for n in news.global %}
     <section py:for="n in news['global']" >
@@ -9,4 +9,7 @@
     	  <message>{{ n.message }}</message>
     </section>
   {% endfor %}
-  </article>
+  </article> -->
+
+{% load news_tags %}
+{% news_list %}

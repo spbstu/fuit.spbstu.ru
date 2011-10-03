@@ -16,7 +16,7 @@
     <div id="promo">
     	<div class="promo-content">
     	  <ul>
-    	  	<li><img src="/img/promo/01.jpg" alt="" />
+    	  	<li><img src="{{ STATIC_URL }}img/promo/01.jpg" alt="" />
     	  	  <div class="promo-text">
     	  	  	<h2>Высокие стандарты обучения</h2>
     	  	  	<p>Основные направления обучения студентов включают в себя теорию и технологию разработки программного обеспечения, построение и поддержку баз данных и организацию и обслуживание компьютерных сетей и систем. Важной особенностью учебного плана кафедры является углубленная математическая подготовка студентов, с акцентированием использования математических дисциплин в области информационных технологий.</p>
@@ -44,14 +44,14 @@
     </div>
   </section>
   <div id="content">
-    <article xmlns:py="http://genshi.edgewall.org/" id="global-news" class="news">
-     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
+    <article id="global-news" class="news">
+     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
 
         {% include "inc/global-news.html" %}
         <p><a href="news/archive/">Архив новостей и объявлений</a></p>
     </article>
-    <article xmlns:py="http://genshi.edgewall.org/" id="deans-news" class="news">
-     <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="/i/null.gif" alt="Пописаться на новости" /></a></h1>
+    <article id="deans-news" class="news">
+     <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
 
      <!-- {% include "inc/deans-news.html" %} -->
       <p><a href="news/archive/">Архив объявлений деканата</a></p>
