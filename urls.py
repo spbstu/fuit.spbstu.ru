@@ -9,9 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', include('www.urls')),
     url(r'^news/?', include('news.urls')),
- 
     
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -19,8 +17,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    #url(r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/vita/projects/fuit/'}),
-)
+    url(r'', include('www.urls')),   
+) 
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

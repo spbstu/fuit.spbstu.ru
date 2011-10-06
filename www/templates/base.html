@@ -1,0 +1,38 @@
+{% load flatpages %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header%}
+ 
+ {% block breadcrumbs %}
+  {% include "inc/breadcrumbs-nav.html" %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  {% include "inc/menu-main.html" %}
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+    	{{ flatpage.content }}
+    {% endblock content%}
+  </div>
+  
+</div>
+
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>
