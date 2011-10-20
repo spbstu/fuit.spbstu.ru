@@ -1,4 +1,5 @@
-{% load flatpages %}
+{% load pages_tags %}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
@@ -6,23 +7,30 @@
       lang="ru">
 {% include "inc/head-content.html" %}
 <body>
+
 <div class="wrapper">
 
  {% block header %}
   {% include "inc/header.html" %}
- {% endblock header%}
+ {% endblock header %}
  
  {% block breadcrumbs %}
   {% include "inc/breadcrumbs-nav.html" %}
  {% endblock breadcrumbs %}
  
  {% block menu-main %}
-  {% include "inc/menu-main.html" %}
+  
+  {% menu %}
+  
  {% endblock menu-main %}
  
   <div id="content">
+    {% block sidebar %}
+      {% include "inc/core-contacts.html" %} 
+    {% endblock sidebar %}
+    
     {% block content %}
-    	{{ flatpage.content }}
+    {{ flatpage.content|safe }}	
     {% endblock content%}
   </div>
   

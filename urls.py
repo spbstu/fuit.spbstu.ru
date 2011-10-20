@@ -10,14 +10,15 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^news/?', include('news.urls')),
-    
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    url(r'^tinymce/', include('tinymce.urls')),
+    #url(r'^tinymce/filebrowser/', include('filebrowser.urls')),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^admin/filebrowser/',include('filebrowser.urls') ),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'', include('www.urls')),   
+    url(r'^media/(?P<path>.*)', 'django.views.static.serve', { 'document_root': settings.MEDIA_ROOT }),
+    #url(r'', include('www.urls')),
+
 ) 
 
 urlpatterns += staticfiles_urlpatterns()

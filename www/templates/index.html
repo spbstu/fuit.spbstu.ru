@@ -1,4 +1,5 @@
 {% load news_tags %}
+{% load pages_tags %}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -11,7 +12,11 @@
 <div class="wrapper">
   {% include "inc/header.html" %}
   <section id="sub-header">
-  {% include "inc/menu-main.html" %}
+  {% block menu-main %}
+  
+   {% menu %}
+  
+  {% endblock menu-main %}
 
   
   {% include "inc/core-contacts.html" %} 
@@ -66,7 +71,7 @@
     	<h2>Наши достижения</h2>
     	<h3><a href="#">Победа в конкурсе «IT-планета»</a></h3>
 
-    	<p><img src="img/it-planet.jpg" alt="Кубок" /></p>
+    	<p><img src="{{STATIC_URL}}img/it-planet.jpg" alt="Кубок" /></p>
     	<p>Из более 80 финалистов лишь 19-ти покорились сложнейшие оригинальные задания очного тура, прошедшего на базе СПбГУТ – соорганизатора Олимпиады в СЗФО</p>
     </aside>
   </div>

@@ -45,7 +45,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/vita/projects/fuit/uploaded/'
+MEDIA_ROOT = '/home/vita/projects/fuit/uploads/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -54,9 +54,8 @@ MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/vita/projects/fuit/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -65,14 +64,14 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   '/home/vita/projects/fuit/uploaded/', 
+   #'/home/vita/projects/fuit/uploads/', 
    
 )
 
@@ -101,7 +100,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    
 
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+
+    'django.core.context_processors.request',
 )
 
 ROOT_URLCONF = 'fuit.urls'
@@ -120,13 +129,17 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'filebrowser',
+    'grappelli',
+
+    'django.contrib.admin',
     'django.contrib.flatpages',
+
     'www',
     'news',
+    'pages',
+    
+
 )
 
 # A sample logging configuration. The only tangible logging
@@ -151,3 +164,22 @@ LOGGING = {
         },
     }
 }
+
+# TinyMCE Settings
+TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = STATIC_URL +'js/tiny_mce'
+
+#TINYMCE_FILEBROWSER = False
+TINYMCE_DEFAULT_CONFIG = {
+    'mode' : "textareas",
+    'theme': "advanced",
+    'theme_advanced_toolbar_location' : "top",
+
+
+    
+}
+
+
+# Filebrowser Settings
+FILEBROWSER_DIRECTORY = MEDIA_ROOT
+
