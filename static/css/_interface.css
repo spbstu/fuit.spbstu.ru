@@ -1,0 +1,18 @@
+.closer {
+  font-size:1.4em;
+  font-weight:bold;
+  position:absolute;
+  top:9px;
+  right:9px;
+  color:#999;
+  cursor:pointer;
+  }
+  .closer:hover {
+    color:#333;
+    }
+.tab-content {
+  display:none;
+  }
+  .tab-content-visible {
+    display:block;
+    }

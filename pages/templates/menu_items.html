@@ -1,0 +1,27 @@
+<nav id="menu-main">
+  <ul>
+	{% for i in all %}
+	<li 
+	  {% ifequal i.url request.path %}
+	    class="current"
+      {% endifequal %}>
+
+	  <a href="{{ i.url }}"> {{ i.title }} </a>
+
+	  {% if i.url in request.path %}
+	  <ul class="submenu">
+	  	{% for n in nested %}
+	  		<li
+	  			{% ifequal n.url request.path %}
+	    			class="current"
+      			{% endifequal %}>	  		
+	  		
+	  		<a href="{{n.url}}">{{ n.title }} </a>
+	  	{% endfor %}
+	  	</li>
+	  </ul>
+	  {% endif %}
+	</li>
+	{% endfor %}
+  </ul>	
+</nav>

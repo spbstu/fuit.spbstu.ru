@@ -1,0 +1,87 @@
+.schedule {
+  }
+  .schedule th {
+    font-size:1.3em;
+    font-weight:bold;
+  }
+  .schedule td {
+    font-size:1.4em;
+    padding:3px 10px;
+    }
+  .schedule a {
+    text-decoration:none;
+    }
+.schedule-horz {
+  width:auto;
+  margin-bottom:2em;
+  }
+  .schedule-horz thead th {
+    font-weight:normal;
+    padding:0 5px;
+    white-space:normal;
+    text-align:left;
+    }
+  .schedule-horz tbody th {
+    font-size:1.2em;
+    width:7ex;
+    white-space:pre;
+    border-bottom:solid 1px #CCC;
+    }
+  .schedule-horz td {
+    font-size:1.2em;
+    width:8ex;
+    padding:3px 5px;
+    border-bottom:solid 1px #CCC;
+    } 
+.schedule-day {
+  margin-bottom:2em;
+  }
+  .schedule-day h3 {
+    font-size:1.2em;
+    font-weight:bold;
+    position:relative;
+    top: 4px;
+    float:left;
+    width:4ex;
+    margin-right:9px;
+    text-align:right;
+    }
+  .schedule .week {
+    font-size:1em;
+    }
+  .schedule .time {
+    font-weight:normal;
+    padding:0 3px;
+    }
+    .schedule .time sup {
+      position:relative;
+      top:-0.5em;
+      font-size:0.8em;
+      }
+  .schedule .title {
+    font-size:1.6em;
+    width:25ex;
+    color:#000;
+    }
+  .schedule .type {
+    font-style:italic;
+    }
+  .schedule .teacher {
+    font-style:italic;
+    width:23ex;
+    } 
+  .schedule .place {
+    width:20ex;
+  }
+  .schedule tr:nth-child(2n) {
+    background:#EFEFEF;
+    }
+  .schedule-day .lesson {
+    color:#525EFE; 
+    }
+  .schedule-day .practice {
+    color:#5BB230; 
+    }
+  .schedule-day .labor {
+    color:#FF986B; 
+    }
