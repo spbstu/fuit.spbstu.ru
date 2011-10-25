@@ -28,8 +28,6 @@ def breadcrumbs(context):
     pages.append(Page.objects.get(url = path))
     
     return {
-             'ln':len(bc),
-            'path':path,
             'pages': pages,
             'request': context['request']
             }
