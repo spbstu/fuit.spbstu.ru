@@ -26,11 +26,14 @@
  
   <div id="content">
     {% block sidebar %}
-      {% include "inc/core-contacts.html" %} 
+        {% if flatpage.show_sidebar == true %}
+            {% include "inc/core-contacts.html" %}
+        {% endif %}
     {% endblock sidebar %}
     
     {% block content %}
-    {{ flatpage.content|safe }}	
+        <h1>{{ flatpage.title }}</h1>
+        {{ flatpage.content|safe }}
     {% endblock content%}
   </div>
   

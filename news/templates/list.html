@@ -1,6 +1,9 @@
 {% for n in news %}
-    <h2>{{ n.title }}</h2>
-    <p class="date">
-    <time>{{ n.date }}</time></p>
-    <message>{{ n.title }} {{ n.text|safe }}</message>
+    <section>
+        <h2>{{ n.title }}</h2>
+        {% if n.type == 0 %}
+        <p class="date"><time>{{ n.date }}</time></p>
+        {% endif %}
+        {{ n.text|safe }}
+    </section>
 {% endfor %}
