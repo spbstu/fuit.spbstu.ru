@@ -175,11 +175,11 @@ TINYMCE_JS_ROOT = STATIC_URL +'js/tiny_mce'
 
 #TINYMCE_FILEBROWSER = False
 TINYMCE_DEFAULT_CONFIG = {
-    'mode' : "textareas",
-    'theme': "advanced",
-    'theme_advanced_toolbar_location' : "top",
-
-
+    #'mode' : "textareas",
+    #'theme': "advanced",
+    #'theme_advanced_toolbar_location' : "top",
+    #'theme_advanced_resizing' : True,
+    'extended_valid_elements' : "article[name|href|target|title|onclick],section",
     
 }
 
