@@ -4,7 +4,7 @@ from pages.models import Page
 register = template.Library()
 
 @register.inclusion_tag('menu_items.html', takes_context=True)
-def menu(context): 
+def menu(context):
     return {
             'all': Page.objects.filter(show_in_menu = '1', 
                                        url__regex = '^/[^/]+/$'),
@@ -22,7 +22,6 @@ def breadcrumbs(context):
     pages = []
     
     for i in bc:
-
        pages.append(Page.objects.get(url = path))
        path = path + i + '/'            
     pages.append(Page.objects.get(url = path))

@@ -1,7 +1,7 @@
 <nav class="breadcrumbs breadcrums-top">
    {% for i in pages %}
        {% if request.path != i.url %}
-           <a href="{{ i.url }}">{{ i.title }}</a>→
+           <a href="{{ i.url }}">{{ i.title }}</a> →
        {% else %}
            {{ i.title }}
        {% endif %}
