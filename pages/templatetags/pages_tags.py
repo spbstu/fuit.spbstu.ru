@@ -1,4 +1,5 @@
 from django import template
+from django.core.urlresolvers import resolve
 from pages.models import Page
 
 register = template.Library()
@@ -22,10 +23,19 @@ def breadcrumbs(context):
     pages = []
     
     for i in bc:
-       pages.append(Page.objects.get(url = path))
-       path = path + i + '/'            
-    pages.append(Page.objects.get(url = path))
-    
+        try:
+            pages.append(Page.objects.get(url = path))
+            path = path + i + '/'
+        except :
+            view, args, kwargs = resolve(context['request'].path)
+            pages.append({'url':context['request'].path, 'title': view.title})
+            path = path + i + '/'
+    try:
+        pages.append(Page.objects.get(url = path))
+    except :
+        view, args, kwargs = resolve(context['request'].path)
+        pages.append({'url':context['request'].path, 'title': view.title})
+
     return {
             'pages': pages,
             'request': context['request']

@@ -1,0 +1,13 @@
+{% extends 'inner-page.html' %}
+
+{% load schedule_tags %}
+
+{% block content %}
+    <h1>{{ flatpage.title }}</h1>
+
+    {% groups_list %}
+{% endblock content %}
+
+{# TODO: Переписать основной шаблон так, чтобы заработало выключение sidebar #}
+{% block sidebar %}
+{% endblock %}

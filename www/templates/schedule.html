@@ -1,0 +1,75 @@
+{% load news_tags %}
+{% load pages_tags %}
+{% load schedule_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+        <h1>Расписание группы {{ group }}</h1>
+        
+        {% for day in days %}
+            <div class="schedule-day">
+            <h3>{{ day.day }}</h3>
+            <table class="schedule">
+            {% for class in day.classes %}
+                <tr>
+                    <td class="time">{{ class.time|time:"H" }}<sup>{{ class.time|time:"i" }}</sup></td>
+                    <td class="week">{{ class.reccurance|weeks_repeat }}</td>
+                    <td class="type">{{ class.eventType }}</td>
+                    <td class="title">{{ class.subject }}</td>
+                    <td class="teacher">{{ class.teacher }}</td>
+                    <td class="place">{{ class.classRoom }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <th class="time"></th>
+                    <td class="week">1, 2</td>
+                    <td class="type"></td>
+                    <td class="title">Занятий нет</td>
+                    <td class="teacher"></td>
+                    <td class="place"></td>
+                </tr>
+
+            {% endfor %}
+            </table>
+            </div>
+        {% endfor %}
+
+        <h2>Расписание факультета</h2>
+        {% groups_list group %}
+    {% endblock content%}
+  </div>
+  
+</div>
+
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

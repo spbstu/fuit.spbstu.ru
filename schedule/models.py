@@ -61,7 +61,7 @@ class Classes(Meeting):
         verbose_name_plural = u'Занятия'
         ordering = ['group', 'day']
     def __unicode__(self):
-        return "%2s - %2s (%2s)" % (self.group, self.subject, self.day)
+        return u"%2s - %2s (%2s)" % (self.group, self.subject, self.day)
 
 class Exams(Meeting):
     class Meta:

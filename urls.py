@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^admin/filebrowser/',include('filebrowser.urls') ),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^for-students/schedule/', include('schedule.urls')),
+
     url(r'^media/(?P<path>.*)', 'django.views.static.serve', { 'document_root': settings.MEDIA_ROOT }),
     #url(r'', include('www.urls')),
 
