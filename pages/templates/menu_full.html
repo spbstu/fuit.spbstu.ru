@@ -1,0 +1,27 @@
+<nav id="full-menu">
+<div class="shadow">
+    <div class="wrapper">
+        <ul>
+    {% for i, page in pages.items reversed %}
+    <li class="column">
+        <h3 {% ifequal page.page.url request.path %}
+            class="current"
+        {% endifequal %}>
+        <a href="{{ page.page.url }}">{{ page.page.title }}</a>
+    </h3>
+        <ul  class="second-items">
+        {% for i, page in page.children.items reversed %}
+        <li
+            {% ifequal page.page.url request.path %}
+                class="current"
+                {% endifequal %}>
+            <a href="{{ page.page.url }}">{{ page.page.title }}</a>
+        </li>
+        {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+</div>
+</nav>

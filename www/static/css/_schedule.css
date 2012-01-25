@@ -85,3 +85,34 @@
   .schedule-day .labor {
     color:#FF986B; 
     }
+
+        
+.schedule .past td,
+.schedule .past th {
+  color: #999;
+  }
+  .schedule .past .comment {
+    display: none;
+    }
+
+/* Список групп
+---------------------------------------- */
+
+.groups-list {
+    margin-bottom:1em;
+    }
+.groups-list .department {
+    display:inline-block;
+    margin-right:18px;
+    vertical-align:top;
+    }
+.groups-list .department .group-number {
+    display:inline-block;
+    width:50px;
+    }
+.groups-list .department h3 {
+    font-size:11px;
+    width:200px;
+    height:42px;
+    margin-right:20px;
+    }

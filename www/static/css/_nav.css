@@ -53,6 +53,13 @@ a[href^="tel"] {
 #full-menu h3 {
   margin-bottom:0.5em;
   }
+  #full-menu .current a {
+    color: #363636;
+    text-decoration: none;
+  }
+  #full-menu .current a:hover {
+      text-decoration:underline;
+  }
 
 /*----------------------------------------------------
  * Табы
