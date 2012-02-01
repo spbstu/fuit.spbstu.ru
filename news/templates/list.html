@@ -1,7 +1,7 @@
-{% for n in news %}
+{% for n in news reversed %}
     <section>
         <h2>{{ n.title }}</h2>
-        {% if n.type == 0 %}
+        {% if show_date == 1 %}
         <p class="date"><time>{{ n.date }}</time></p>
         {% endif %}
         {{ n.text|safe }}

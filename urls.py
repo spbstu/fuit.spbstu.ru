@@ -9,7 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^news/?', include('news.urls')),
+    url(r'^news/', include('news.urls'), {'scope': 'global'}),
+    url(r'^deannews/', include('news.urls'), {'scope': 'deannews'}),
     url(r'^tinymce/', include('tinymce.urls')),
     #url(r'^tinymce/filebrowser/', include('filebrowser.urls')),
     url(r'^grappelli/', include('grappelli.urls')),

@@ -1,0 +1,55 @@
+{% load news_tags %}
+{% load pages_tags %}
+{% load schedule_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+    <h1>{{ title }}</h1>
+
+    <article class="news">
+    {% for news in content %}
+    <section>
+    <h2>{{ news.title }}</h2>
+    <p class="date"><time>{{ news.date }}</date></p>
+    {{ news.text|safe }}
+    </section>
+    {% endfor %}
+    </article>
+
+    {% get_pager_by_years scope %}
+    {% endblock content%}
+  </div>
+  
+</div>
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

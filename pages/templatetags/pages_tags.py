@@ -39,25 +39,26 @@ def menuFull(context):
             }
 
 @register.inclusion_tag('breadcrumbs.html', takes_context=True)
-def breadcrumbs(context):
+def breadcrumbs(context, title=""):
     bc = context['request'].path.strip('/')
     bc = bc.split('/')
     path = '/'
     pages = []
-    
+
     for i in bc:
         try:
             pages.append(Page.objects.get(url = path))
             path = path + i + '/'
         except :
-            view, args, kwargs = resolve(context['request'].path)
-            pages.append({'url':context['request'].path, 'title': view.title})
+            view, args, kwargs = resolve(path)
+            pages.append({'url':path, 'title': view.title % kwargs})
             path = path + i + '/'
     try:
         pages.append(Page.objects.get(url = path))
     except :
         view, args, kwargs = resolve(context['request'].path)
-        pages.append({'url':context['request'].path, 'title': view.title})
+        pages.append({'url':context['request'].path, 'title': view.title %
+            kwargs})
 
     return {
             'pages': pages,

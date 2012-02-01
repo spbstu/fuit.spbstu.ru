@@ -54,17 +54,17 @@
   <div id="content">
  
     <article id="global-news" class="news">
-     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
-
-
-		{% news_list 0 %}
-        <p><a href="news/archive/">Архив новостей и объявлений</a></p>
-    </article>
-    <article id="deans-news" class="news">
      <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
 
-        {% news_list 1%}
-      <p><a href="news/archive/">Архив объявлений деканата</a></p>
+
+		{% deans_news_list %}
+        <p><a href="/news/">Архив новостей и объявлений</a></p>
+    </article>
+    <article id="deans-news" class="news">
+     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
+
+        {% news_list %}
+      <p><a href="/deannews/">Архив объявлений деканата</a></p>
 
     </article>
     <aside id="additional">
