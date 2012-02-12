@@ -104,3 +104,22 @@ a[href^="tel"] {
     position:absolute;
     right:0;
     } 
+/*--------------------------------------------------
+ * Пейджер (постраничная навигация)
+ */
+.pager {
+    font-size:12px;
+    }
+.pager a {
+    text-decoration:none;
+    margin:0 1ex 0 0 ;
+    padding:3px 5px;
+    background:#FFF;
+    border-radius:4px;
+    color:#333;
+    }
+    .pager a:hover,
+    .pager a.current {
+        background:#adadad;
+        color:#EFEFEF;
+        }
