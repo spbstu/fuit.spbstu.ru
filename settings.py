@@ -143,8 +143,8 @@ INSTALLED_APPS = (
     'www',
     'news',
     'pages',
-    'schedule'
-    
+    'schedule',
+    'process'
 
 )
 
