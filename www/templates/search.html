@@ -1,0 +1,16 @@
+{% extends 'inner-page.html' %}
+
+{% load schedule_tags %}
+
+{% block content %}
+    <h1>{{ flatpage.title }}</h1>
+
+    <div id="yandex-results-outer" onclick="return {'tld': 'ru', 'language':
+        'ru', 'encoding': ''}">...</div>
+    <script charset="utf-8" type="text/javascript"
+        src="http://site.yandex.net/load/site.js"></script>
+{% endblock content %}
+
+{# TODO: Переписать основной шаблон так, чтобы заработало выключение sidebar #}
+{% block sidebar %}
+{% endblock %}
