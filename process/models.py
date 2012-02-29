@@ -14,9 +14,16 @@ class Term(models.Model):
         verbose_name = 'Семестр'
         verbose_name_plural = 'Семестры'
         ordering = ['-term_start']
+
+
     def __unicode__(self):
         if self.term_start.month < 6:
             suffix = u'весенний семестр'
         else:
             suffix = u'осенний семестр'
         return u'%2s, %2s' % (self.term_start.year, suffix)
+
+def term_attr(date_obj, date = datetime.date.today()):
+    term = Term.objects.get(record_week_start__gt = date + datetime.timedelta(days=30))
+    print dir(term)
+    return term.__getattribute__(date_obj)

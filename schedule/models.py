@@ -52,10 +52,14 @@ class Meeting(models.Model):
     teacher = models.ForeignKey('Teachers')
     classRoom = models.ForeignKey('ClassRooms')
 
+    class Meta:
+        abstract = True
+
 class Classes(Meeting):
     dateEnd = models.DateField('Дата окончания')
     day = models.CommaSeparatedIntegerField('День недели', max_length = 10)
     reccurance = models.IntegerField('Неделя', choices=[(0, 'Обе'), (1, 'Четная'), (2, 'Нечетная')])
+
     class Meta:
         verbose_name = u'Занятие'
         verbose_name_plural = u'Занятия'
