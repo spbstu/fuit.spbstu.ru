@@ -25,5 +25,4 @@ class Term(models.Model):
 
 def term_attr(date_obj, date = datetime.date.today()):
     term = Term.objects.get(record_week_start__gt = date + datetime.timedelta(days=30))
-    print dir(term)
     return term.__getattribute__(date_obj)
