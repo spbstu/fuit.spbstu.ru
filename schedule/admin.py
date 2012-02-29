@@ -11,9 +11,11 @@ class ClassesAdminForm(forms.ModelForm):
         model = Classes
 
     dateStart = forms.DateField(initial = term_attr('term_start'),
+            label = u'Дата начала',
             widget=admin.widgets.AdminDateWidget(attrs={'class' : 'hasDatepicker', 'size':
             '10'}))
     dateEnd = forms.DateField(initial = term_attr('record_week_start'),
+            label = u'Дата окончания',
             widget=admin.widgets.AdminDateWidget(attrs={'class' : 'hasDatepicker', 'size':
             '10'}))
 

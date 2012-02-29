@@ -48,9 +48,9 @@ class Meeting(models.Model):
     time = models.TimeField('Время начала')
     group = models.ForeignKey('Groups', verbose_name=u'Группа')
     eventType = models.ForeignKey('EventTypes', verbose_name=u'Тип занятия')
-    subject = models.ForeignKey('Subjects')
-    teacher = models.ForeignKey('Teachers')
-    classRoom = models.ForeignKey('ClassRooms')
+    subject = models.ForeignKey('Subjects', verbose_name=u'Название предмета')
+    teacher = models.ForeignKey('Teachers', verbose_name=u'Преподаватель')
+    classRoom = models.ForeignKey('ClassRooms', verbose_name=u'Аудитория')
 
     class Meta:
         abstract = True
