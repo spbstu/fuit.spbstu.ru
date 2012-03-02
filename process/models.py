@@ -9,7 +9,7 @@ class Term(models.Model):
     record_week_start = models.DateField("Зачетная неделя")
     exams_start = models.DateField("Начало сессии")
     additional_exams_start = models.DateField("Начало допсессии")
-    holidays_star = models.DateField("Начало каникул")
+    holidays_start = models.DateField("Начало каникул")
     class Meta:
         verbose_name = 'Семестр'
         verbose_name_plural = 'Семестры'
