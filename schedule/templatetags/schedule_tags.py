@@ -26,7 +26,6 @@ def groups_list(current_group=False):
         level = 1
     else:
         level = 0
-    print groups
     return {'groups': groups, 'level': level, 'departments': departments}
 
 @register.filter
