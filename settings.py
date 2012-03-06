@@ -144,7 +144,8 @@ INSTALLED_APPS = (
     'news',
     'pages',
     'schedule',
-    'process'
+    'process',
+    'scientific'
 
 )
 

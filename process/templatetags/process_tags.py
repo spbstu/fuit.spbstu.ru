@@ -13,6 +13,7 @@ def process_week(date = datetime.date.today()):
     try:
         term = Term.objects.get(term_start__lt = date, holidays_start__gt = date)
         if date < term.record_week_start:
+            print term.term_start.isocalendar()[1]
             if (date.isocalendar()[1] - term.term_start.isocalendar()[1]) % 2:
                 week_name = u'Четная неделя'
             else:
