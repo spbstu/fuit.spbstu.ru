@@ -23,21 +23,22 @@ monthsTupleV = (
 
 register = template.Library()
 
+
 @register.inclusion_tag('menu_items.html', takes_context=True)
 def menu(context):
     return {
-            'all': Page.objects.filter(show_in_menu = '1', 
-                                       url__regex = '^/[^/]+/$'),
-            'nested': Page.objects.filter(show_in_menu = '1',
-                                          url__regex = '^/' + context['request'].path.split('/')[1] + '/[^/]+/$'),
+            'all': Page.objects.filter(show_in_menu='1',
+                                       url__regex='^/[^/]+/$'),
+            'nested': Page.objects.filter(show_in_menu='1',
+                                          url__regex='^/' + context['request'].path.split('/')[1] + '/[^/]+/$'),
                                           #url__regex = '^/about'  + '/[^/]+/$'),
             'request': context['request']
             }
 
-@register.inclusion_tag('menu_full.html', takes_context = True)
+
+@register.inclusion_tag('menu_full.html', takes_context=True)
 def menuFull(context):
-    raw_pages = Page.objects.filter(show_in_menu = '1',
-                                url__regex = '^/([^/]+/){1,2}$')
+    raw_pages = Page.objects.filter(show_in_menu='1', url__regex='^/([^/]+/){1,2}$')
     level1_re = re.compile('^/[^/]+/$')
     parent_re = re.compile('^/[^/]+/')
     pages = {}
@@ -56,6 +57,7 @@ def menuFull(context):
             'request': context['request']
             }
 
+
 @register.inclusion_tag('breadcrumbs.html', takes_context=True)
 def breadcrumbs(context, title=""):
     bc = context['request'].path.strip('/')
@@ -65,17 +67,22 @@ def breadcrumbs(context, title=""):
 
     for i in bc:
         try:
-            pages.append(Page.objects.get(url = path))
+            pages.append(Page.objects.get(url=path))
             path = path + i + '/'
-        except :
+        except:
             view, args, kwargs = resolve(path)
-            pages.append({'url':path, 'title': view.title % kwargs})
+
+            print view.title
+            print path
+
+            pages.append({'url': path, 'title': view.title % kwargs})
             path = path + i + '/'
+
     try:
-        pages.append(Page.objects.get(url = path))
-    except :
+        pages.append(Page.objects.get(url=path))
+    except:
         view, args, kwargs = resolve(context['request'].path)
-        pages.append({'url':context['request'].path, 'title': view.title %
+        pages.append({'url': context['request'].path, 'title': view.title %
             kwargs})
 
     return {
@@ -83,16 +90,28 @@ def breadcrumbs(context, title=""):
             'request': context['request']
             }
 
+
+@register.inclusion_tag('title.html', takes_context=True)
+def title(context, title=""):
+    try:
+        title = Page.objects.get(url=context['request'].path).title
+    except:
+        view, args, kwargs = resolve(context['request'].path)
+        title = view.title
+    
+    return {'title': title}
+
+
 @register.inclusion_tag('date_interval.html', takes_context=True)
 def date_interval(context, date_first, date_second):
 
     if date_first.year != date_second.year:
-        result = u"%2s %2s %2s – %2s %2s %2s" % (date_first.day, 
+        result = u"%2s %2s %2s – %2s %2s %2s" % (date_first.day,
             monthsTupleV[date_first.month], date_first.year, date_second.day,
             monthsTupleV[date_second.month], date_second.year)
     else:
         if date_first.month != date_second.month:
-            result = u"%2s %2s – %2s %2s" % (date_first.day, 
+            result = u"%2s %2s – %2s %2s" % (date_first.day,
             monthsTupleV[date_first.month], date_second.day,
             monthsTupleV[date_second.month])
         else:

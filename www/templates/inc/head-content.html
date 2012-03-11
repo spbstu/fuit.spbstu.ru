@@ -1,16 +1,12 @@
+{% load pages_tags %}
+
 <head>
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <meta charset="UTF-8"/>
 <link href="{{ STATIC_URL }}css/fuit.css" rel="stylesheet" />
 <link rel="shortcut icon" href="{{ STATIC_URL }}i/favicon.ico" type="image/x-icon" /> 
 <title>
-    {% block page_title %}
-        {% if flatpage.title %}
-        {{ flatpage.title }}
-        {% else %}
-            {{ group }}
-        {% endif %}
-    {% endblock %} - Факультет управления и информационных технологий СПбГПУ</title>
+    {% title %} - Факультет управления и информационных технологий СПбГПУ</title>
 
 <script src="http://yandex.st/jquery/1.5.2/jquery.min.js"></script>
 
