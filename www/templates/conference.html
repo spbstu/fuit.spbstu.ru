@@ -55,6 +55,7 @@
               <table class="table-data">
                 <thead>
                   <tr>
+                    <th>&nbsp;</th>
                     <th class="w35">Название конференции</th>
                     <th class="w25">Где и когда проводится</th>
                     <th>Организатор</th>
@@ -63,10 +64,13 @@
                 <tbody>
                   {% for conference in national_conferences %}
                     <tr>
+                      <td><p>{{ forloop.counter }}</p></td>
                       <td><p>{{conference.title}}</p></td>
                       <td><p>{{conference.place}}</p>
                       <p>{% if conference.startDate %}
                         {% date_interval conference.startDate conference.endDate %}
+                      {% else %}
+                        {% get_month conference.alternateDateMonth %}
                       {% endif %}</p>
                       <td><p>{{ conference.organizers|safe }}</p></td>
                     </tr>
@@ -80,6 +84,7 @@
               <table class="table-data">
                 <thead>
                   <tr>
+                    <th>&nbsp;</th>
                     <th class="w35">Название конференции</th>
                     <th class="w25">Где и когда проводится</th>
                     <th>Организатор</th>
@@ -88,6 +93,7 @@
                 <tbody>
                   {% for conference in international_conferences %}
                     <tr>
+                      <td><p>{{ forloop.counter }}</p></td>
                       <td><p>{{conference.title}}</p></td>
                       <td><p>{{conference.place}}</p>
                       <p>{% if conference.startDate %}
@@ -106,6 +112,7 @@
               <table class="table-data">
                 <thead>
                   <tr>
+                    <th>&nbsp;</th>
                     <th class="w20">Дата</th>
                     <th class="w35">Название</th>
                     <th>Контакты</th>
@@ -114,6 +121,7 @@
                 <tbody>
                   {% for conference in local_conferences %}
                     <tr>
+                      <td><p>{{ forloop.counter }}</p></td>
                       <td><p>{% if conference.startDate %}
                         {% date_interval conference.startDate conference.endDate %}
                       {% endif %}</p></td>
