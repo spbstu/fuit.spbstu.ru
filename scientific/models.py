@@ -4,18 +4,18 @@ from django.db import models
 import datetime
 
 monthsTuple = (
-        (u'1', u'Январь'),
-        (u'2', u'Февраль'),
-        (u'3', u'Март'),
-        (u'4', u'Апрель'),
-        (u'5', u'Май'),
-        (u'6', u'Июнь'),
-        (u'7', u'Июль'),
-        (u'8', u'Август'),
-        (u'9', u'Сентябрь'),
-        (u'10', u'Октябрь'),
-        (u'11', u'Ноябрь'),
-        (u'12', u'Декабрь')
+        (1, u'Январь'),
+        (2, u'Февраль'),
+        (3, u'Март'),
+        (4, u'Апрель'),
+        (5, u'Май'),
+        (6, u'Июнь'),
+        (7, u'Июль'),
+        (8, u'Август'),
+        (9, u'Сентябрь'),
+        (10, u'Октябрь'),
+        (11, u'Ноябрь'),
+        (12, u'Декабрь')
         )
 
 conferenceTypes = (
@@ -30,9 +30,9 @@ class Conference(models.Model):
             choices=conferenceTypes, max_length=32)
     startDate = models.DateField("Дата начала", blank=True)
     endDate = models.DateField("Дата окончания", blank=True)
-    alternateDateMonth = models.CharField("Неточная дата", choices=monthsTuple,
+    alternateDateMonth = models.IntegerField("Неточная дата", choices=monthsTuple,
             blank=True, max_length=2)
-    alternateDateYear = models.IntegerField(default = datetime.datetime.now().year, blank=True)
+    alternateDateYear = models.IntegerField(blank=True)
     place = models.CharField("Место проведения", blank=True,
         help_text="Указывается только для всероссийских и международных конференций",
         max_length=32)
