@@ -1,4 +1,6 @@
 .table-data {
+  margin-bottom:2em;
+  width:100%;
   }
   .table-data td,
   .table-data th {
@@ -22,6 +24,7 @@
 /*
 Служебные классы установки ширины
 */
+.table-data .w5  {width:5%; }
 .table-data .w10 {width:10%;}
 .table-data .w15 {width:15%;}
 .table-data .w20 {width:20%;}
