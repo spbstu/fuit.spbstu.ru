@@ -1,4 +1,5 @@
 .schedule {
+	margin-bottom: 2em;
   }
   .schedule th {
     font-size:1.3em;
@@ -32,25 +33,41 @@
     width:8ex;
     padding:3px 5px;
     border-bottom:solid 1px #CCC;
-    } 
+    }
+
+/*
+Секция расписания - один день
+*/
+
 .schedule-day {
-  margin-bottom:2em;
+  margin-bottom:6em;
   }
   .schedule-day h3 {
     font-size:1.2em;
     font-weight:bold;
     position:relative;
-    top: 4px;
-    float:left;
-    width:4ex;
-    margin-right:9px;
-    text-align:right;
+      top: -2em;
+      left:-3.5em;
+      line-height:2.4;
+      float:left;
+    width:2.4em;
+      height:2.4em;
+      margin-top:2em;
+      margin-bottom:0.5em;
+    text-align:center;
+      background:#DEDEEE;
+      border-radius:1.2em;
     }
+  .schedule-day .schedule {
+      margin-left:-3em;
+      }
   .schedule .week {
     font-size:1em;
+    width:4ex;
     }
   .schedule .time {
     font-weight:normal;
+    width:5ex;
     padding:0 3px;
     }
     .schedule .time sup {
@@ -64,10 +81,9 @@
     color:#000;
     }
   .schedule .type {
-    font-style:italic;
+      width:6ex;
     }
   .schedule .teacher {
-    font-style:italic;
     width:23ex;
     } 
   .schedule .place {
@@ -85,15 +101,14 @@
   .schedule-day .labor {
     color:#FF986B; 
     }
-
-        
+    
 .schedule .past td,
 .schedule .past th {
-  color: #999;
-  }
-  .schedule .past .comment {
-    display: none;
-    }
+	color: #999;
+	}
+	.schedule .past .comment {
+		display: none;
+		}
 
 /* Список групп
 ---------------------------------------- */

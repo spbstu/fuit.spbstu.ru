@@ -5,6 +5,7 @@
 @import url(_promo.css);
 @import url(_core-contacts.css);
 @import url(_images.css);
+@import url(_tables.css);
 @import url(_icons.css);
 @import url(_text.css);
 @import url(_news.css);
@@ -12,5 +13,6 @@
 @import url(_persons.css);
 @import url(_interface.css);
 @import url(_yandex-map.css);
+@import url(_forms.css);
 
 @import url(_tools.css);

@@ -13,7 +13,7 @@ h1 {
   }
 h2 {
   font-size:2.0em;
-  line-height:0.8;
+  line-height:1;
   margin-top:2em;
   margin-bottom:1em;
   color:#000;
@@ -48,6 +48,10 @@ strong {
   font-weight:bold;
   color:#000;
   }
+em {
+  font-style:italic;
+  color:#000;
+}
 #content ul, 
 #content ol {
   font-size:1.3em;
@@ -68,11 +72,29 @@ strong {
   #content ol ol,
   #content ol ul {
     font-size:1em;
-    margin-left:1em;
+    margin-left:1.5em;
     margin-bottom:0;
     }
+#content dl {
+	}
+	#content dt {
+		font-size: 1.3em;
+		margin: 2em 0 1em;
+		color: #000;
+		}
+	#content dd {
+		font-size: 1.3em;
+		}
+		#content dd p,
+		#content dd ul,
+		#content dd ol {
+			font-size: 1em;
+			}
+		
 sup {
-  
+  font-size:0.7em;
+  position:relative;
+  top:-0.6em;
   }
 sub {
   

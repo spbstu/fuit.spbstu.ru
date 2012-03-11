@@ -1,10 +1,15 @@
 .promo-content {
   position:relative;
   overflow:hidden;
+  height:288px;
+  margin-bottom:1em;
   }
+  .promo-content ul {
+    position:absolute;
+    width:100000px;
+    }
   .promo-content li {
     float:left;
-    width:100%;
     text-align:right;
     position:relative;
     }
@@ -12,7 +17,7 @@
   position:absolute;
   top:0;
   left:0;
-  width:24em;
+  width:25em;
   padding:18px;
   text-align:left;
   background:rgba(255,255,255,.8);

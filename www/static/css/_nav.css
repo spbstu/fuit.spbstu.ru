@@ -23,12 +23,15 @@ a[href^="tel"] {
  */
 #menu-main ul {
   font-size:1.8em;
-  line-height:2;
-  margin-top:-0.6em;
+  line-height:1;
+  margin-top:1em;
   }
+  #menu-main li {
+    margin-bottom:1em;
+    }
   #menu-main .submenu {
     font-size:0.8em;
-    margin-left:2em;
+    margin-left:1em;
     margin-bottom:1em;
     }
   #menu-main .current:before {
@@ -53,73 +56,3 @@ a[href^="tel"] {
 #full-menu h3 {
   margin-bottom:0.5em;
   }
-  #full-menu .current a {
-    color: #363636;
-    text-decoration: none;
-  }
-  #full-menu .current a:hover {
-      text-decoration:underline;
-  }
-
-/*----------------------------------------------------
- * Табы
- */
-.tabs {
-  overflow:hidden;
-  margin-bottom:1em;
-  }
-  .tabs ul {
-    position:relative;
-    padding: 0 2ex;
-    margin-left:0 !important;
-    border-bottom: solid 1px #CCC;
-    }
-    .tabs ul:after {
-      content: ".";
-      overflow:hidden;
-      clear:both;
-      display:block;
-      height:0;
-      }
-  .tabs li {
-    float:left;
-    padding: 0 1ex;
-      }
-    .tabs li:before {
-      content: "" !important;
-      }
-  .tabs .current {
-    position:relative;
-    top: 1px;
-    padding-bottom:1px;
-    background:#FEFAEE;
-    border:solid #CCC;
-    border-width:1px 1px 0;
-    }
-    .tabs .current a {
-      text-decoration:none;
-      color: inherit;
-      }
-  .tabs .last {
-    position:absolute;
-    right:0;
-    } 
-/*--------------------------------------------------
- * Пейджер (постраничная навигация)
- */
-.pager {
-    font-size:12px;
-    }
-.pager a {
-    text-decoration:none;
-    margin:0 1ex 0 0 ;
-    padding:3px 5px;
-    background:#FFF;
-    border-radius:4px;
-    color:#333;
-    }
-    .pager a:hover,
-    .pager a.current {
-        background:#adadad;
-        color:#EFEFEF;
-        }

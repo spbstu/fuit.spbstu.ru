@@ -62,18 +62,21 @@ header {
     content: ".";
     overflow:hidden;
     clear:both;
+    display:block;
     height:0;
     width:0;
     }
 #menu-main {
+  line-height:1;
   float:left;
   width:17%;
+/*  width:220px;*/
   margin:4px 18px;
   }
 #core-contacts {
   float:right;
-  width:17%;
-  margin:0 18px;
+  width:21%;
+  margin:0 0 0 2%;
   }
 #promo {
   margin: 0 21%;
@@ -96,7 +99,7 @@ header {
  */
 #content {
   position:relative;
-  margin-left:21%;
+  margin-left:22%;
   padding-top:4px;
   padding-bottom:2em;
   }
@@ -108,16 +111,22 @@ header {
     overflow:hidden;
     }
   #global-news {
-    float:left;
-    width:60%;
+  	margin-left: 51%;
     }
+    #global-news .gap {
+        margin-left:36px;
+        }
   #deans-news {
-    float:right;
-    width:38%;
+    float:left;
+	display:inline;
+    width:50%;
     }
+    #deans-news .gap {
+    	/*margin-left: 36px;*/
+    	}
   #additional {
     position:absolute;
-    left:-25%;
+    left:-28%;
     width:20%;
     padding:9px;
     background:#FFF;
@@ -128,6 +137,9 @@ header {
       margin-top:0;
       margin-bottom:0;
       }
+    #index #additional {
+        top:0;
+        }
 /*----------------------------------------------------
  * Footer-Nav
  */
@@ -209,5 +221,5 @@ footer {
  * Base content
  */
 .base-content-box {
-  margin-right:21%;
+  margin-right:23%;
   }

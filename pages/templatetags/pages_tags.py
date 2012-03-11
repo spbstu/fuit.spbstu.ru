@@ -1,7 +1,25 @@
+# -*- coding: utf8 -*-
+
 from django import template
 from django.core.urlresolvers import resolve
 from pages.models import Page
 import re
+
+monthsTupleV = (
+            u'',
+            u'января',
+            u'февраля',
+            u'марта',
+            u'апреля',
+            u'мая',
+            u'июня',
+            u'июля',
+            u'августа',
+            u'сентября',
+            u'октября',
+            u'ноября',
+            u'декабря'
+        )
 
 register = template.Library()
 
@@ -64,3 +82,24 @@ def breadcrumbs(context, title=""):
             'pages': pages,
             'request': context['request']
             }
+
+@register.inclusion_tag('date_interval.html', takes_context=True)
+def date_interval(context, date_first, date_second):
+
+    if date_first.year != date_second.year:
+        result = u"%2s %2s %2s – %2s %2s %2s" % (date_first.day, 
+            monthsTupleV[date_first.month], date_first.year, date_second.day,
+            monthsTupleV[date_second.month], date_second.year)
+    else:
+        if date_first.month != date_second.month:
+            result = u"%2s %2s – %2s %2s" % (date_first.day, 
+            monthsTupleV[date_first.month], date_second.day,
+            monthsTupleV[date_second.month])
+        else:
+            if date_first.day != date_second.day:
+                result = u"%2s–%2s %2s" % (date_first.day, date_second.day,
+                monthsTupleV[date_first.month])
+            else:
+                result = u"%2s %2s" % (date_first.day, monthsTupleV[date_first.month])
+
+    return {'date': result}

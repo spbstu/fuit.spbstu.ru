@@ -12,7 +12,57 @@
     }
 .tab-content {
   display:none;
+  margin-bottom: 4em;
   }
   .tab-content-visible {
     display:block;
     }
+/*----------------------------------------------------
+ * Табы
+ */
+.tabs {
+  overflow:hidden;
+  margin-bottom:1em;
+  margin-right:2em;
+  }
+  .tabs ul {
+    position:relative;
+    padding: 0 2ex;
+    margin-left:0 !important;
+    border-bottom: solid 1px #CCC;
+    }
+    .tabs ul:after {
+      content: ".";
+      overflow:hidden;
+      clear:both;
+      display:block;
+      height:0;
+      }
+  .tabs li {
+  	display:inline-block;
+    padding: 0 1ex;
+      }
+    .tabs li:before {
+      content: "" !important;
+      }
+  .tabs .current {
+    position:relative;
+    top: 1px;
+    padding-bottom:1px;
+    background:#FEFAEE;
+    border:solid #CCC;
+    border-width:1px 1px 0;
+    }
+    .tabs .current a {
+      text-decoration:none;
+      color: inherit;
+      }
+  .tabs .last {
+    position:absolute;
+    right:0;
+    } 
+  .tabs .tab-item {
+  	}
+  	.tabs .tab-item small {
+  		font-size:0.8em;
+  		}

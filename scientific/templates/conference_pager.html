@@ -1,0 +1,7 @@
+<ul >
+{% for year in years reversed %}
+<li><a href="{{ year.url }}" {% if year.url == request.path %}
+    class="current"
+    {% endif %}>Конференции в {{ year.title }} году</a></li>
+{% endfor %}
+</ul>

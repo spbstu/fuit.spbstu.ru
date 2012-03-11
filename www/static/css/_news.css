@@ -2,10 +2,14 @@
   
   }
 .news .date {
-  font-size:1.0em;
-  margin-bottom:0;
+  font-size:1.1em;
+  margin-top:-1.5em;
+  margin-bottom:0.5em;
   color: #666;
-}
+  }
+.news section {
+  margin-bottom:4em;
+  }
 
 .attention {
   position:relative;

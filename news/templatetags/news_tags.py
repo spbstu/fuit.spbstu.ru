@@ -22,6 +22,5 @@ def get_pager_by_years(context, scope):
     basepath = re.compile('[0-9]{4}/$').sub('', context['request'].path)
     years = [{'title': year, 'url': '%s%s/' % (basepath, year)} for year in
         range(newsObj.objects.aggregate(Min('date'))['date__min'].year, datetime.date.today().year + 1)]
-    print years
     return {'years': years, 'request': context['request']}
 

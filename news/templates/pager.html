@@ -1,6 +1,6 @@
 <p class="pager">
 {% for year in years reversed %}
-<a href="{{ year.url }}" {% if year.url = request.path %}
+<a href="{{ year.url }}" {% if year.url == request.path %}
     class="current"
     {% endif %}>{{ year.title }}</a>
 {% endfor %}

@@ -21,7 +21,6 @@
   font-size:1.1em;
   font-weight:bold;
   margin-bottom:0;
-  text-transform:lowercase;
   }
 /*
  * Подробные контакты
@@ -105,3 +104,15 @@
     #core-contacts .social .tw {
       background-image:url(../i/icons/twitter.png);
       }
+      
+/*
+ * Часы работы 
+ */
+ 
+#core-contacts .working-time {
+	font-size:1.3em;
+	margin:0 0 1em 2em;
+	}
+	#core-contacts .working-time li {
+		margin:0;
+		}
