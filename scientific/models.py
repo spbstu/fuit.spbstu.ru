@@ -31,7 +31,7 @@ class Conference(models.Model):
     startDate = models.DateField("Дата начала", blank=True)
     endDate = models.DateField("Дата окончания", blank=True)
     alternateDateMonth = models.IntegerField("Неточная дата", choices=monthsTuple,
-            blank=True, max_length=2)
+            blank=True, null=True)
     alternateDateYear = models.IntegerField(blank=True)
     place = models.CharField("Место проведения", blank=True,
         help_text="Указывается только для всероссийских и международных конференций",
