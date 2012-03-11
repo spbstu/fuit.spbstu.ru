@@ -24,6 +24,7 @@ conferenceTypes = (
         ('international', u'Международная конференция')
         )
 
+
 class Conference(models.Model):
     title = models.CharField("Название конференции", max_length=512)
     conferenceType = models.CharField("Категория конференции",
