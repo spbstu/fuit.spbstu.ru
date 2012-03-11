@@ -4,63 +4,37 @@
 
 from scientific.models import Conference, monthsTuple
 from django.shortcuts import render
-from django.template import RequestContext, Context
 import datetime
-from itertools import chain
 
-def archive(request, year=datetime.datetime.now().year):
+def get_confernces_by_type(conference_type, year):
     today = datetime.datetime.now().date()
-    conferences = {
-        'local': {
-            'future': [],
-            'past': []
-        },
-        'national': {
-            'future': [],
-            'past': []
-        },
-        'international': {
-            'future': [],
-            'past': []
-        }
+    today_month = datetime.datetime.now().month
+
+    return {
+        'future': sorted(
+            list(Conference.objects.filter(conferenceType=conference_type, startDate__year=year, endDate__gte=today)) +
+            list(Conference.objects.filter(conferenceType=conference_type, alternateDateYear=year, alternateDateMonth__gte=today_month)),
+            key=lambda x: x.alternateDateMonth and x.alternateDateMonth or x.startDate.month
+            ),
+        'past': sorted(
+            list(Conference.objects.filter(conferenceType=conference_type, startDate__year=year, endDate__lt=today)) +
+            list(Conference.objects.filter(conferenceType=conference_type, alternateDateYear=year, alternateDateMonth__lt=today_month)),
+            key=lambda x: x.alternateDateMonth and x.alternateDateMonth or x.startDate.month
+            )
     }
 
-    local_conferences = sorted (
-        list(Conference.objects.filter(conferenceType='local', startDate__year=year)) + 
-        list(Conference.objects.filter(conferenceType='local', alternateDateYear=year)),
-        key = sortConference
-        )
-
-    national_conferences = sorted(
-        list(Conference.objects.filter(conferenceType='national', startDate__year=year)) + 
-        list(Conference.objects.filter(conferenceType='national', alternateDateYear=year)),
-        key = lambda x: x.alternateDateMonth and x.alternateDateMonth or x.startDate.month
-        )
-
-    international_conferences = sorted(
-        list(Conference.objects.filter(conferenceType='international', startDate__year=year)) +
-        list(Conference.objects.filter(conferenceType='international', alternateDateYear=year)),
-        key = sortConference
-        )
-
-    for conference in local_conferences:
-        if conference.endDate:
-            if conference.endDate > today:
-                conferences['local']['future'].append(conference)
-            else:
-                conferences['local']['past'].append(conference)
-        else:
-            if int(conference.alternateDateMonth) > today.month:
-                conferences['local']['future'].append(conference)
-            else:
-                conferences['local']['past'].append(conference)
+def archive(request, year=datetime.datetime.now().year):
+    conferences = {
+        'local': get_confernces_by_type('local', year),
+        'national': get_confernces_by_type('national', year),
+        'international': get_confernces_by_type('international', year)
+    }
 
     if year == datetime.datetime.now().year:
         archive.title = u'Научные конференции'
     else:
         archive.title = str(year)
-    return render(request, 'conference.html', {'local_conferences': local_conferences,
-        'national_conferences': national_conferences, 
-        'international_conferences': international_conferences,
+    return render(request, 'conference.html', {'conferences': conferences,
         'year': year,
-        'month': monthsTuple})
+        'month': monthsTuple}
+        )
