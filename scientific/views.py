@@ -6,6 +6,7 @@ from scientific.models import Conference, monthsTuple
 from django.shortcuts import render
 import datetime
 
+
 def get_confernces_by_type(conference_type, year):
     today = datetime.datetime.now().date()
     today_month = datetime.datetime.now().month
@@ -23,17 +24,32 @@ def get_confernces_by_type(conference_type, year):
             )
     }
 
-def archive(request, year=datetime.datetime.now().year):
+
+def conferences_archive(request, year):
     conferences = {
         'local': get_confernces_by_type('local', year),
         'national': get_confernces_by_type('national', year),
         'international': get_confernces_by_type('international', year)
     }
 
-    if year == datetime.datetime.now().year:
-        archive.title = u'Научные конференции'
-    else:
-        archive.title = str(year)
+    conferences_archive.title = str(year)
+
+    return render(request, 'conference.html', {'conferences': conferences,
+        'year': year,
+        'month': monthsTuple}
+        )
+
+
+def conferences_active(request):
+    year = datetime.datetime.now().year
+    conferences = {
+        'local': get_confernces_by_type('local', year),
+        'national': get_confernces_by_type('national', year),
+        'international': get_confernces_by_type('international', year)
+    }
+
+    conferences_active.title = u'Научные конференции'
+
     return render(request, 'conference.html', {'conferences': conferences,
         'year': year,
         'month': monthsTuple}
