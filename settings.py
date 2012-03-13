@@ -14,12 +14,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'data.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used sqlite3with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',     # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'data.db',                          # Or path to database file if using sqlite3.
+        'USER': '',                                 # Not used with sqlite3.
+        'PASSWORD': '',                             # Not used sqlite3with sqlite3.
+        'HOST': '',                                 # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                 # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -76,8 +76,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   #'/home/vita/projects/fuit/uploads/', 
-   
+   #'/home/vita/projects/fuit/uploads/',
 )
 
 # List of finder classes that know how to find static files in
@@ -105,8 +104,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    
-
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -124,7 +121,6 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   
 )
 
 INSTALLED_APPS = (
@@ -145,7 +141,8 @@ INSTALLED_APPS = (
     'pages',
     'schedule',
     'process',
-    'scientific'
+    'scientific',
+    'staff'
 
 )
 
@@ -174,7 +171,7 @@ LOGGING = {
 
 # TinyMCE Settings
 TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
-TINYMCE_JS_ROOT = STATIC_URL +'js/tiny_mce'
+TINYMCE_JS_ROOT = STATIC_URL + 'js/tiny_mce'
 
 #TINYMCE_FILEBROWSER = False
 TINYMCE_DEFAULT_CONFIG = {
@@ -182,11 +179,9 @@ TINYMCE_DEFAULT_CONFIG = {
     #'theme': "advanced",
     #'theme_advanced_toolbar_location' : "top",
     #'theme_advanced_resizing' : True,
-    'extended_valid_elements' : "article[name|href|target|title|onclick],section",
-    
+    'extended_valid_elements': "article[name|href|target|title|onclick],section",
 }
 
 
 # Filebrowser Settings
 FILEBROWSER_DIRECTORY = MEDIA_ROOT
-
