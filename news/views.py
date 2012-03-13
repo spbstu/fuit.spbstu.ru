@@ -6,12 +6,7 @@ from fuit.news.models import News, GlobalNews, DeansNews
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-def breadcrumbs(f):
-    def bc(title):
-        f.title = title
-    return bc
 
-#@breadcrumbs(u'%(years)s')
 def news_archive_by_year(request, scope, year=None):
     newsObj = {'global': GlobalNews, 'deannews': DeansNews}[scope]
     title = {'global': 'Архив новостей', 'deannews': 'Архив объявлений деканата'}[scope]
@@ -23,6 +18,7 @@ def news_archive_by_year(request, scope, year=None):
         'scope': scope}, RequestContext(request))
 
 news_archive_by_year.title = u'%(year)s'
+
 
 def news_archive(request, scope):
     return news_archive_by_year(request, scope)
