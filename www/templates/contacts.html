@@ -1,0 +1,70 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+{% load pages_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+        <h1>Контактная информация</h1>
+
+        <nav class="toc tabs">
+          <ul>
+            <li class="tab-item current"><a href="#map">Схема проезда</a></li>
+            {% for department in departments %}
+              <li class="tab-item"><a href="#department_{{ department.id }}">{{ department.title }}</a></li>
+            {% endfor %}  
+          </ul>
+        </nav>
+        <section class="tab-content tab-content-visible" id="map">
+
+        </section>
+
+        
+        {% for department in departments %}
+          <section class="tab-content" id="department_{{ department.id }}">
+            <h3>{{ department.title }}</h3>
+            {% if persons|key:department.id|key:'subdepartments' %}
+              {% for subdepartment in persons|key:department.id|key:'subdepartments' %}
+                <h4>Кафедра {{ subdepartment }}</h4>
+              {% endfor %}
+            {% endif %}   
+          </section> 
+        {% endfor %}
+        
+            
+    {% endblock content%}
+  </div>
+  
+</div>
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

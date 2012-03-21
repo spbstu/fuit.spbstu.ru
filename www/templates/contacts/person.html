@@ -1,0 +1,23 @@
+<article class="person">
+    <h2>{{person.person.first_name}} {{person.person.patronimic}} {{person.person.last_name}}</h2>
+    
+    <h3>{{person.position.title}}</h3>
+    
+    {% if person.person.photo %}
+      <p class="photo"><img src="{{ MEDIA_URL }}{{ person.person.photo }}" alt="{{person.person.first_name}} {{person.person.patronimic}} {{person.person.last_name}}" ></p>
+    {% endif %}
+    
+    {% if person.person.graduate %}
+      <p>{{ person.person.graduate }}</p>
+    {% endif %}
+    
+    {% if person.person.office %}
+      <h4>Контактаная информация</h4>
+      {{ person.person.office|safe }}
+    {% endif %}
+    
+    {% if person.person.meeting_time %}
+      <h4>Часы приема</h4>
+      {{ person.person.meeting_time|safe }}
+    {% endif %}
+</article>

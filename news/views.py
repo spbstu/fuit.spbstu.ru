@@ -11,9 +11,9 @@ def news_archive_by_year(request, scope, year=None):
     newsObj = {'global': GlobalNews, 'deannews': DeansNews}[scope]
     title = {'global': 'Архив новостей', 'deannews': 'Архив объявлений деканата'}[scope]
     if year:
-        news = newsObj.objects.filter(date__year = year)
+        news = newsObj.objects.filter(date__year=year)
     else:
-        news = newsObj.objects.filter(date__year = datetime.date.today().year)
+        news = newsObj.objects.filter(date__year=datetime.date.today().year)
     return render_to_response('news.html', {'content': news, 'title': title,
         'scope': scope}, RequestContext(request))
 
