@@ -32,7 +32,3 @@ def groups_list(current_group=False):
 def weeks_repeat(value):
     weeks = [u'1, 2',u'1',u'2']
     return weeks[value]
-
-@register.filter
-def key(d, key_name):
-    return d[key_name]

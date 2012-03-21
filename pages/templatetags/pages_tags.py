@@ -122,3 +122,8 @@ def date_interval(context, date_first, date_second):
                 result = u"%2s %2s" % (date_first.day, monthsTupleV[date_first.month])
 
     return {'date': result}
+
+
+@register.filter
+def key(d, key_name):
+    return d[key_name]
