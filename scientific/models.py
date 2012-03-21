@@ -1,7 +1,6 @@
 # -*- coding: utf8 -*-
 
 from django.db import models
-import datetime
 
 monthsTuple = (
         (1, u'Январь'),
