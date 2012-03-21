@@ -8,28 +8,32 @@ from fuit.staff.models import *
 
 
 def contacts(request):
-    persons_by_departments = {}
-    departments = OfficialDepartments.objects.all()
-    education_departments = EducationDepartments.objects.all()
-    persons_raw = PersonToPosition.objects.all()
+    persons = PersonToPosition.objects.all()
+    departments = {}
 
-    for department in departments:
-        persons_by_departments[department.id] = {
-            'persons': [],
-            'subdepartments': {}
+    for person in persons:
+        department_id = person.position.department.id
+        if (department_id not in departments):
+            departments[department_id] = {
+                'title': person.position.department.title,
+                'id': department_id,
+                'persons': [],
+                'subdepartments': {}
             }
-
-    for person in persons_raw:
-        if person.education_department is not None:
-            persons_by_departments[person.position.department.id]['subdepartments'][person.education_department.id] = person.education_department.title
-
-        persons_by_departments[person.position.department.id]['persons'].append(person)
-    print persons_by_departments
+        if (person.education_department):
+            education_department_id = person.education_department.id
+            if(education_department_id not in departments[department_id]['subdepartments']):
+                departments[department_id]['subdepartments'][education_department_id] = {
+                    'title': person.education_department.title,
+                    'id': education_department_id,
+                    'persons': []
+                }
+            departments[department_id]['subdepartments'][education_department_id]['persons'].append(person)
+        else:
+            departments[department_id]['persons'].append(person)
 
     return render_to_response('contacts.html', {
-        'departments': departments,
-        'education_departments': education_departments,
-        'persons': persons_by_departments
+        'departments': departments
         },
         RequestContext(request))
 

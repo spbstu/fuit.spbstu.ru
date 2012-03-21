@@ -34,8 +34,8 @@
         <nav class="toc tabs">
           <ul>
             <li class="tab-item current"><a href="#map">Схема проезда</a></li>
-            {% for department in departments %}
-              <li class="tab-item"><a href="#department_{{ department.id }}">{{ department.title }}</a></li>
+            {% for key, department in departments.items %}
+              <li class="tab-item"><a href="#department_{{ key }}">{{ department.title }}</a></li>
             {% endfor %}  
           </ul>
         </nav>
@@ -43,18 +43,30 @@
 
         </section>
 
-        
-        {% for department in departments %}
-          <section class="tab-content" id="department_{{ department.id }}">
+        {% for key, department in departments.items %}
+          <section class="tab-content" id="department_{{ key }}">
             <h3>{{ department.title }}</h3>
-            {% if persons|key:department.id|key:'subdepartments' %}
-              {% for subdepartment in persons|key:department.id|key:'subdepartments' %}
-                <h4>Кафедра {{ subdepartment }}</h4>
+            {% if department.info %}
+              <div class="">
+                {{ department.info }}
+              </div>
+            {% endif %}
+            {% for person in department.persons %}
+              {% include "contacts/person.html" %}
+            {% endfor %}
+            {% if department.subdepartments %}
+            <div class="three-columns">
+              {% for key, subdepartment in department.subdepartments.items %}
+                <div class="column">
+                  <h4>{{ subdepartment.title }}</h4>
+                  {% for person in subdepartment.persons %}
+                    {% include "contacts/person.html" %}
+                  {% endfor %}
+                </div>
               {% endfor %}
-            {% endif %}   
-          </section> 
+            {% endif %}
+          </section>
         {% endfor %}
-        
             
     {% endblock content%}
   </div>
