@@ -20,6 +20,7 @@ def contacts(request):
                 'persons': [],
                 'subdepartments': {}
             }
+
         if (person.education_department):
             education_department_id = person.education_department.id
             if(education_department_id not in departments[department_id]['subdepartments']):
@@ -38,3 +39,8 @@ def contacts(request):
         RequestContext(request))
 
 contacts.title = u'Контактная информация'
+
+
+def map():
+    buildings = Buildings.objects.all()
+    return buildings
