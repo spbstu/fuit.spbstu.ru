@@ -6,3 +6,4 @@
 .settings
 .idea
 data.db
+uploads/*
