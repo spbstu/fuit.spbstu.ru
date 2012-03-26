@@ -1,0 +1,14 @@
+{% extends "base.html" %}    
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for year, grants in grants.items reversed %}
+      <h2>{{ year }}</h2>
+      <ul>
+      {% for grant in grants %}
+        <li><a href="/scientific-work/contests-and-grants/{{ year }}/{{ grant.id }}/">{{ grant.title }}</a></li>
+      {% endfor %}
+      </ul>
+    {% endfor %}
+{% endblock content%}
+  

@@ -2,7 +2,7 @@
 
 # Create your views here.
 
-from scientific.models import Conference, monthsTuple
+from scientific.models import Conference, monthsTuple, Grant
 from django.shortcuts import render
 import datetime
 
@@ -54,3 +54,36 @@ def conferences_active(request):
         'year': year,
         'month': monthsTuple}
         )
+
+
+def grants_all(request):
+    all_grants = Grant.objects.order_by('year')
+    grants = {}
+    for grant in all_grants:
+        if grant.year not in grants:
+            grants[grant.year] = []
+        grants[grant.year].append(grant)
+
+    return render(request, 'grants_list.html',
+        {'grants': grants, 'title': grants_all.title})
+
+grants_all.title = 'Конкурсы и гранты'
+
+
+def grants_by_year(request, year):
+    grants = {}
+    grants[year] = Grant.objects.filter(year=year)
+    grants_by_year.title = year
+    return render(request, 'grants_list.html',
+        {
+            'grants': grants,
+            'title': u'Конкуры и гранты за %2s год' % (grants_by_year.title)
+            }
+        )
+
+
+def grant_by_grant_id(request, grant_id):
+    grant = Grant.objects.get(id=grant_id)
+
+    grant_by_grant_id.title = grant.title
+    return render(request, 'grant.html', {'grant': grant})

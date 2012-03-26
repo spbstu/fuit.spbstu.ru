@@ -1,0 +1,22 @@
+{% extends "base.html" %}    
+
+{% block content %}
+    <h1>{{ grant.title }}</h1>
+    
+    {{ grant.text|safe }}
+
+    {% if grant.attachments.all|length %}
+      <h3>Приложения</h3>
+
+      <ul>
+      {% for attachment in grant.attachments.all %}
+        <li><a href="{{ attachment.attachment }}">{{ attachment.title }}</a> 
+          {% if attachment.description %}
+            ({{ attachment.description }})
+          {% endif %}
+        </li> 
+      {% endfor %}
+      </ul>
+    {% endif %}
+{% endblock content%}
+  

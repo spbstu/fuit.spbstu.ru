@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 
+import datetime
 from django.db import models
 
 monthsTuple = (
@@ -44,3 +45,35 @@ class Conference(models.Model):
 
     def __unicode__(self):
         return "%2s (%2s) - %2s" % (self.startDate, self.place, self.title)
+
+
+class GrantAttachment(models.Model):
+    title = models.CharField("Название файла", max_length=128)
+    attachment = models.FileField("Файл", upload_to='files/grants/')
+    description = models.CharField("Дополнительная информация", max_length=128, blank=True)
+
+    class Meta:
+        verbose_name = 'Приложение к гранту'
+        verbose_name_plural = 'Приложения к гранту'
+
+    def __unicode__(self):
+        return self.title
+
+
+class Grant(models.Model):
+    title = models.CharField("Название конкурса (гранта)", max_length=255)
+    text = models.TextField("Описание")
+    year = models.DecimalField("Год",
+        default=datetime.datetime.now().year,
+        max_digits=4,
+        decimal_places=0)
+    attachments = models.ManyToManyField('GrantAttachment',
+        verbose_name='Приложения',
+        blank=True)
+
+    class Meta:
+        verbose_name = 'Конкурс (Грант)'
+        verbose_name_plural = 'Конкурсы и гранты'
+
+    def __unicode__(self):
+        return u'%2s (%2d)' % (self.title, self.year)
