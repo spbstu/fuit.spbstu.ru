@@ -2,7 +2,7 @@
 
 # Create your views here.
 
-from scientific.models import Conference, monthsTuple, Grant
+from scientific.models import Conference, monthsTuple, Grant, TeacherInterest
 from django.shortcuts import render
 import datetime
 
@@ -84,6 +84,13 @@ def grants_by_year(request, year):
 
 def grant_by_grant_id(request, grant_id):
     grant = Grant.objects.get(id=grant_id)
-
     grant_by_grant_id.title = grant.title
     return render(request, 'grant.html', {'grant': grant})
+
+
+def teachers_interest(request):
+    teachers = TeacherInterest.objects.order_by('department', 'teacher')
+    teachers_interest.title = 'Научные интересы преподавателей'
+
+    return render(request, 'teachers_interest.html', {'teachers': teachers,
+        'title': teachers_interest.title})

@@ -6,3 +6,4 @@ from scientific.models import *
 admin.site.register(Conference)
 admin.site.register(Grant)
 admin.site.register(GrantAttachment)
+admin.site.register(TeacherInterest)

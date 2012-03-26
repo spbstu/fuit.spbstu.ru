@@ -2,6 +2,7 @@
 
 import datetime
 from django.db import models
+from staff.models import Persons as Persons, EducationDepartments
 
 monthsTuple = (
         (1, u'Январь'),
@@ -77,3 +78,16 @@ class Grant(models.Model):
 
     def __unicode__(self):
         return u'%2s (%2d)' % (self.title, self.year)
+
+
+class TeacherInterest(models.Model):
+    teacher = models.ForeignKey(Persons, verbose_name='Преподаватель')
+    department = models.ForeignKey(EducationDepartments, verbose_name='Кафедра')
+    interests = models.TextField('Интересы преподавателя')
+
+    class Meta:
+        verbose_name = 'Преподаватель'
+        verbose_name_plural = 'Научные интересы преподавателей'
+
+    def __unicode__(self):
+        return self.teacher.__unicode__()

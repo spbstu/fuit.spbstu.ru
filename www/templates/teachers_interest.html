@@ -1,0 +1,25 @@
+{% extends "base.html" %}    
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    
+    <table class="table-data">
+      <tr>
+        <th>№</th>
+        <th>Ф.И.О.</th>
+        <th>Кафедра</th>
+        <th>Направление</th>
+      </tr>
+      {% for teacher in teachers %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ teacher.teacher.last_name }} {{ teacher.teacher.first_name }} {{ teacher.teacher.patronimic }}</td>
+          <td>{{ teacher.department.title }}</td>
+          <td>{{ teacher.interests|safe }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+{% endblock content%}
+{% block sidebar %}
+{% endblock %}
+  
