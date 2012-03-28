@@ -1,5 +1,5 @@
 from django.contrib import admin
-from pages.models import Page
+from pages.models import *
 from django.contrib.flatpages.models import FlatPage
 
 
@@ -11,5 +11,7 @@ class PageAdmin(admin.ModelAdmin):
             ]
 
 admin.site.register(Page, PageAdmin)
+admin.site.register(Attachment)
+admin.site.register(PageAttachments)
 
 admin.site.unregister(FlatPage)

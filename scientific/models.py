@@ -91,3 +91,16 @@ class TeacherInterest(models.Model):
 
     def __unicode__(self):
         return self.teacher.__unicode__()
+
+
+class ScienceWeekThesises(models.Model):
+    title = models.CharField('Название', max_length=64)
+    attachment = models.FileField("Файл",
+        upload_to='files/science_week_thesises/')
+
+    class Meta:
+        verbose_name = 'Тезисы недели науки'
+        verbose_name_plural = 'Тезисы недели науки'
+
+    def __unicode__(self):
+        return self.title

@@ -1,6 +1,6 @@
 import re
 from django import template
-from scientific.models import Conference, monthsTuple
+from scientific.models import Conference, monthsTuple, ScienceWeekThesises
 from django.db.models import Max, Min
 
 register = template.Library()
@@ -22,3 +22,15 @@ def get_pager_by_years(context):
 def get_month(context, month):
 
     return {'month': monthsTuple[int(month) - 1][1]}
+
+
+@register.inclusion_tag('files_list.html', takes_context=True)
+def scienceWeekThesises(context):
+    try:
+        files = ScienceWeekThesises.objects.all()
+    except:
+        files = []
+    return {
+        'files': files,
+        'request': context['request']
+        }

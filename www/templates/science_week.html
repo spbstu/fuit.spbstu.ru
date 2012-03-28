@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load scientific_tags %}
+{% load pages_tags %}
+
+{% block content %}
+    <h1>{{ flatpage.title }}</h1>
+    {{ flatpage.content|safe }}
+
+    {% attachmentsList %}
+
+    <h2>Архив тезисов недели науки</h2>
+
+    {% scienceWeekThesises %}
+{% endblock content%}
+  

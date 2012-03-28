@@ -1,0 +1,7 @@
+{% if files %}
+    <ul>
+    {% for file in files %}
+        <li><a href="/{{ file.attachment }}"</a>{{ file.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

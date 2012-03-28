@@ -2,7 +2,7 @@
 
 from django import template
 from django.core.urlresolvers import resolve
-from pages.models import Page
+from pages.models import *
 import re
 
 monthsTupleV = (
@@ -58,6 +58,23 @@ def menuFull(context):
             }
 
 
+@register.inclusion_tag('files_list.html', takes_context=True)
+def attachmentsList(context):
+    files = []
+
+    try:
+        page = context['flatpage']
+        files_relations = PageAttachments.objects.filter(page__id=page.id)
+        for file in files_relations:
+            files.append(file.attachment)
+    except:
+        files = []
+    return {
+        'files': files,
+        'request': context['request']
+        }
+
+
 @register.inclusion_tag('breadcrumbs.html', takes_context=True)
 def breadcrumbs(context, title=""):
     bc = context['request'].path.strip('/')
@@ -98,7 +115,7 @@ def title(context, title=""):
     except:
         view, args, kwargs = resolve(context['request'].path)
         title = view.title
-    
+
     return {'title': title}
 
 
