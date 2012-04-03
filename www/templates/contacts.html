@@ -47,6 +47,8 @@
           <h3>Схема проезда</h3>
 
           <p>Здание Факультета управления и информационных технологий расположено недалеко от станции «Политехническая» Кировско-Выборгской («красной») линии Петербургского метрополитена. Вблизи факультета также проходит большое количество маршрутов общественного транспорта.</p>
+
+          <div class="yandex-map"><div id="YMapsID" style="height: 450px;"></div></div>
         </section>
 
         {% for key, department in departments.items %}
@@ -84,5 +86,9 @@
 
 {% include "inc/footer.html" %}
 
+<script src="http://api-maps.yandex.ru/1.1/index.xml?key={{ map.api_key }}" type="text/javascript"></script>
+<script type="text/javascript">
+  {% include "inc/map.js.html" %}
+</script>
 </body>
 </html>

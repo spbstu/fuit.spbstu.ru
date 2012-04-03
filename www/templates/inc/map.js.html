@@ -1,0 +1,65 @@
+{% load l10n %}
+{% localize off %}
+
+window.onload = show_map;
+
+function show_map() {
+    var points = {
+        {% for item in map.buildings %}
+            point{{ item.id }}: {
+                latitude: {{ item.latitude }},
+                longitude: {{ item.longitude }}
+            },
+        {% endfor %}
+            mapCenter : {
+                latitude : 30.377,
+                longitude : 60.0077
+            }
+    },
+    placemarks,
+    Ymarks = {},
+    Ypoints = {},
+    routes = {},
+    defaultCenter,
+    defaultZoom = 16,
+    trackStyle = new YMaps.Style(),
+    map = new YMaps.Map(document.getElementById("YMapsID"));
+
+    trackStyle.lineStyle = new YMaps.LineStyle();
+    trackStyle.lineStyle.strokeColor = '0000FF55';
+    trackStyle.lineStyle.strokeWidth = '5';
+
+    {% for item in map.buildings %}
+        Ymarks[{{ item.id }}] = new YMaps.Placemark(new YMaps.GeoPoint({{ item.latitude }}, {{ item.longitude }}));
+
+        Ymarks[{{ item.id }}].setIconContent("{{ item.title }}");
+        Ymarks[{{ item.id }}].name = "<strong>{{ item.title }}</strong>";
+
+        {% if item.photo %}
+            Ymarks[{{ item.id }}].description = "<img src='{{ item.photo }}' alt='{{ item.title }}' /><br />{{ item.address|safe }}";
+        {% else %}
+            Ymarks[{{ item.id }}].description = "{{ item.address|safe }}";
+        {% endif %}
+        map.addOverlay(Ymarks[{{ item.id }}])
+    {% endfor %}
+
+    for ( var i in points) {
+        if (points.hasOwnProperty(i)) {
+            Ypoints[i] = new YMaps.GeoPoint(points[i].latitude,
+                points[i].longitude);
+        }
+    }
+
+    defaultCenter = Ypoints.mapCenter;
+
+    map.setCenter(defaultCenter, defaultZoom);
+
+    // Центрирование карты при закрытии балуна
+    YMaps.Events.observe(map, 
+        map.Events.BalloonClose, 
+        function(m) {
+            m.setCenter(new YMaps.GeoPoint(30.377,60.0077), defaultZoom);
+        }
+    );
+}
+{% endlocalize %}
