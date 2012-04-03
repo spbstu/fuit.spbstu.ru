@@ -13,5 +13,6 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page, PageAdmin)
 admin.site.register(Attachment)
 admin.site.register(PageAttachments)
+admin.site.register(MenuItem)
 
 admin.site.unregister(FlatPage)

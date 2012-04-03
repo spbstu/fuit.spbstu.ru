@@ -10,7 +10,15 @@
 
 	  {% if i.url in request.path %}
 	  <ul class="submenu">
-	  	{% for n in nested %}
+	  	{% for n in nested_pages %}
+	  		<li
+	  			{% ifequal n.url request.path %}
+	    			class="current"
+      			{% endifequal %}>	  		
+	  		
+	  		<a href="{{n.url}}">{{ n.title }} </a>
+	  	{% endfor %}
+	  	{% for n in nested_views %}
 	  		<li
 	  			{% ifequal n.url request.path %}
 	    			class="current"

@@ -36,3 +36,16 @@ class PageAttachments(models.Model):
     def __unicode__(self):
         return u'«%2s» на странице «%2s»' % (self.attachment.title,
             self.page.title)
+
+
+class MenuItem(models.Model):
+    url = models.CharField('Адрес ссылки', max_length=100, help_text='Ссылка, например /about/ или http://www.spbstu.ru/')
+    title = models.CharField('Заголовок пункта меню', max_length=100)
+    order = models.IntegerField('Порядок вывода', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Пункт меню'
+        verbose_name_plural = 'Пункты меню'
+
+    def __unicode__(self):
+        return "%s -> %s" % (self.title, self.url)

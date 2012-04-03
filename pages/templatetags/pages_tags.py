@@ -1,9 +1,10 @@
 # -*- coding: utf8 -*-
+import re
 
 from django import template
 from django.core.urlresolvers import resolve
+
 from pages.models import *
-import re
 
 monthsTupleV = (
             u'',
@@ -26,19 +27,22 @@ register = template.Library()
 
 @register.inclusion_tag('menu_items.html', takes_context=True)
 def menu(context):
+    url_regex = '^/' + context['request'].path.split('/')[1] + '/[^/]+/$'
     return {
             'all': Page.objects.filter(show_in_menu='1',
                                        url__regex='^/[^/]+/$'),
-            'nested': Page.objects.filter(show_in_menu='1',
-                                          url__regex='^/' + context['request'].path.split('/')[1] + '/[^/]+/$'),
-                                          #url__regex = '^/about'  + '/[^/]+/$'),
+            'nested_pages': Page.objects.filter(show_in_menu='1',
+                                          url__regex=url_regex),
+            'nested_views': MenuItem.objects.filter(url__regex=url_regex),
             'request': context['request']
             }
 
 
 @register.inclusion_tag('menu_full.html', takes_context=True)
 def menuFull(context):
-    raw_pages = Page.objects.filter(show_in_menu='1', url__regex='^/([^/]+/){1,2}$')
+    url_regex = '^/([^/]+/){1,2}$'
+    raw_pages = Page.objects.filter(show_in_menu='1', url__regex=url_regex)
+    raw_menu_items = MenuItem.objects.filter(url__regex=url_regex)
     level1_re = re.compile('^/[^/]+/$')
     parent_re = re.compile('^/[^/]+/')
     pages = {}
@@ -46,11 +50,21 @@ def menuFull(context):
         if level1_re.match(page.url):
             pages[page.url] = {
                     'page': page,
-                    'children': {}
+                    'children': []
                     }
         else:
             parent = parent_re.match(page.url).group()
-            pages[parent]['children'][page.url] = page
+            pages[parent]['children'].append(page)
+
+    for page in raw_menu_items:
+        if level1_re.match(page.url):
+            pages[page.url] = {
+                    'page': page,
+                    'children': []
+                    }
+        else:
+            parent = parent_re.match(page.url).group()
+            pages[parent]['children'].append(page)
 
     return {
             'pages': pages,

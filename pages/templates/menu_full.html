@@ -10,12 +10,12 @@
         <a href="{{ page.page.url }}">{{ page.page.title }}</a>
     </h3>
         <ul  class="second-items">
-        {% for i, page in page.children.items reversed %}
+        {% for page in page.children %}
         <li
-            {% ifequal page.page.url request.path %}
+            {% ifequal page.url request.path %}
                 class="current"
                 {% endifequal %}>
-            <a href="{{ page.page.url }}">{{ page.page.title }}</a>
+            <a href="{{ page.url }}">{{ page.title }}</a>
         </li>
         {% endfor %}
         </ul>
