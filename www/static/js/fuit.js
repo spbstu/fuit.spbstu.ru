@@ -1,11 +1,19 @@
 var carouselInterval = 5000;
 var carouselDuration = 1000;
-var frame = ( $.browser.safari ) ? $( 'body' ) : $( 'html' );
+var frame;
 var weekDays = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 var today = new Date();
 
+(function(){
+	if (typeof $ === 'undefined') {
+		t = setTimeout(arguments.callee, 100);
+	} else {
+		init();
+	}
+})();
+
 /*
- * Установка кастомного хеша
+ * Установка кастомного хеша 
  * и прокрутка страницы к верху
  */
 
@@ -21,7 +29,7 @@ if (window.location.hash) {
  */
 
 var showTab = function(targetTab) {
-	if (targetTab == "" || targetTab == null) {
+	if (targetTab === "" || isNull(targetTab)) {
 		return true;
 	}
 	target = targetTab.replace(/#(!\/)*/, '');
@@ -39,7 +47,9 @@ var showTab = function(targetTab) {
 	return false;
 };
 
-$(function() {
+
+function init() {
+	frame = ( $.browser.safari ) ? $( 'body' ) : $( 'html' );
 	$('body').click(function() {
 		$('#core-contacts .contact-details')
 			.removeClass('contact-details-show');
@@ -70,7 +80,7 @@ $(function() {
 		var step = content.find('.carousel-item').width();
 		var count = content.find('.carousel-item').length;
 		var pager = $('.promo-pager li a');
-		if (Math.abs(parseInt(content.css('left'))) < step*(count-1)) {
+		if (Math.abs(parseInt(content.css('left'))) < step * (count-1)) {
 			item++;
 		} else {
 			item = 0;
@@ -87,7 +97,7 @@ $(function() {
 	$('.promo-pager a').click(function() {
 		carousel($("#promo"), $(this).parent().index());
 		return false;
-	})
+	});
 	timer = setInterval(function() {carousel($("#promo"), false);}, carouselInterval);
 	
 /*
@@ -112,7 +122,7 @@ $(function() {
 			obj.text(objData.showMsg);
 		}
 		return false;
-	}
+	};
 	
 /*
  * Создаём объект параметров переключателя "консультации"
@@ -160,7 +170,7 @@ $(function() {
 			console.log($(this).closest('tr'));
 			$(this).closest('tr').addClass('past');
 		}
-	}
+	};
 	
 	var day = $('.schedule.session .time');
 	
@@ -175,5 +185,5 @@ $(function() {
 	}
 	
 	return false;
-});
+}
 
