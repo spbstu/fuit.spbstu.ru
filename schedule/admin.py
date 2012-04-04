@@ -6,23 +6,25 @@ from formWigets.numberSelection import NumbersSelectionWidget
 from schedule.models import Exams, Classes, ClassRooms, EventTypes, Groups, Subjects, Teachers
 from process.models import term_attr
 
+
 class ClassesAdminForm(forms.ModelForm):
     class Meta:
         model = Classes
 
-    dateStart = forms.DateField(initial = term_attr('term_start'),
-            label = u'Дата начала',
-            widget=admin.widgets.AdminDateWidget(attrs={'class' : 'hasDatepicker', 'size':
+    dateStart = forms.DateField(initial=term_attr('term_start'),
+            label=u'Дата начала',
+            widget=admin.widgets.AdminDateWidget(attrs={'class': 'hasDatepicker', 'size':
             '10'}))
-    dateEnd = forms.DateField(initial = term_attr('record_week_start'),
-            label = u'Дата окончания',
-            widget=admin.widgets.AdminDateWidget(attrs={'class' : 'hasDatepicker', 'size':
+    dateEnd = forms.DateField(initial=term_attr('record_week_start'),
+            label=u'Дата окончания',
+            widget=admin.widgets.AdminDateWidget(attrs={'class': 'hasDatepicker', 'size':
             '10'}))
 
     def __init__(self, *args, **kwargs):
         super(ClassesAdminForm, self).__init__(*args, **kwargs)
         print self.fields['dateStart'].widget
         print self.fields['dateEnd'].widget
+
 
 class ClassesAdmin(admin.ModelAdmin):
     form = ClassesAdminForm
@@ -39,8 +41,9 @@ class ClassesAdmin(admin.ModelAdmin):
     )
     formfield_overrides = {
             models.CommaSeparatedIntegerField: {'widget':
-                NumbersSelectionWidget([u'Пн', u'Вт', u'Ср', u'Чт', u'Пт',
-                    u'Сб', u'Вс',], range(1, 8))},
+                NumbersSelectionWidget(
+                    [u'Пн', u'Вт', u'Ср', u'Чт', u'Пт', u'Сб', u'Вс'],
+                    range(1, 8))},
         }
     list_display = ('group', 'dateStart', 'time', 'reccurance', 'subject')
     list_display_links = ('subject',)
