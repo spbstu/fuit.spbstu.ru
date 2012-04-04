@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load pages_tags %}
+
+{% block content %}
+    <h1>Выпускающие кафедры</h1>
+
+    <p>Изначально в состав факультета вошли две кафедры: «Компьютерные и интеллектуальные технологии в проектировании» и «Управление в социально-экономических системах». В 2009 году к факультету присоединилась кафедра «Национальная безопасность». Все кафедры имеют многолетний опыт работы по подготовке специалистов и являются ведущими кафедрами в своих областях.</p>
+
+    {% for department in departments %}
+        <h2>{{ department.title }}</h2>
+
+        {{ department.description|safe }}
+
+        {% if department.sitename %}
+            <p>Сайт кафедры: <a href="{{ department.sitename }}">{{ department.sitename }}</a>
+        {% endif %}
+
+    {% endfor %}
+    
+
+{% endblock content%}
+  

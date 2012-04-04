@@ -59,3 +59,13 @@ def contacts(request):
         })
 
 contacts.title = u'Контактная информация'
+
+
+def departments(request):
+    departments = EducationDepartments.objects.all()
+
+    return render(request, 'about/departments.html', {
+        'departments': departments
+        })
+
+departments.title = u'Выпускающие кафедры'
