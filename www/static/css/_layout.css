@@ -111,18 +111,18 @@ header {
     overflow:hidden;
     }
   #global-news {
-  	margin-left: 51%;
-    }
-    #global-news .gap {
-        margin-left:36px;
-        }
-  #deans-news {
-    float:left;
-	display:inline;
+  	float:left;
+    display:inline;
     width:50%;
     }
+    #global-news .gap {
+        /*margin-left:36px;*/
+        }
+  #deans-news {
+    margin-left: 51%;
+    }
     #deans-news .gap {
-    	/*margin-left: 36px;*/
+    	margin-left: 36px;
     	}
   #additional {
     position:absolute;

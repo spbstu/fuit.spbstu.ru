@@ -50,28 +50,33 @@
     </div>
   </section>
   <div id="content">
- 
+    <aside id="additional">
+      <h2>Наши достижения</h2>
+      <h3><a href="#">Победа в конкурсе «IT-планета»</a></h3>
+
+      <p><img src="{{STATIC_URL}}img/it-planet.jpg" alt="Кубок" /></p>
+      <p>Из более 80 финалистов лишь 19-ти покорились сложнейшие оригинальные задания очного тура, прошедшего на базе СПбГУТ – соорганизатора Олимпиады в СЗФО</p>
+    </aside>
+
     <article id="global-news" class="news">
-     <h1>Объявления деканата <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
-
-
-		{% deans_news_list %}
-        <p><a href="/news/">Архив новостей и объявлений</a></p>
+      <div class="gap">
+        <h1>Объявления деканата</h1>
+          
+          {% deans_news_list %}
+    
+          <p><a href="/news/">Архив новостей и объявлений</a></p>
+        </div>
     </article>
+
     <article id="deans-news" class="news">
-     <h1>Новости и объявления <a href="rss.xml" class="icon rss" title="Пописаться на новости"><img src="{{ STATIC_URL }}i/null.gif" alt="Пописаться на новости" /></a></h1>
+      <div class="gap">
+        <h1>Новости и объявления</a></h1>
 
         {% news_list %}
-      <p><a href="/deannews/">Архив объявлений деканата</a></p>
-
+        
+        <p><a href="/deannews/">Архив объявлений деканата</a></p>
+      </div>
     </article>
-    <aside id="additional">
-    	<h2>Наши достижения</h2>
-    	<h3><a href="#">Победа в конкурсе «IT-планета»</a></h3>
-
-    	<p><img src="{{STATIC_URL}}img/it-planet.jpg" alt="Кубок" /></p>
-    	<p>Из более 80 финалистов лишь 19-ти покорились сложнейшие оригинальные задания очного тура, прошедшего на базе СПбГУТ – соорганизатора Олимпиады в СЗФО</p>
-    </aside>
   </div>
 </div>
 
