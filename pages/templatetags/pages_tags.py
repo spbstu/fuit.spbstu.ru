@@ -124,13 +124,14 @@ def breadcrumbs(context, title=""):
 
 @register.inclusion_tag('title.html', takes_context=True)
 def title(context, title=""):
+    is_front = (context['request'].path == '/')
     try:
         title = Page.objects.get(url=context['request'].path).title
     except:
         view, args, kwargs = resolve(context['request'].path)
         title = view.title
 
-    return {'title': title}
+    return {'title': title, 'is_front': is_front}
 
 
 @register.inclusion_tag('date_interval.html', takes_context=True)
