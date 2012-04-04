@@ -1,4 +1,5 @@
 {% load news_tags %}
+{% load staff_tags %}
 {% load pages_tags %}
 
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
   <div id="content">
     {% block sidebar %}
         {% if pages.show_sidebar == true %}
-            {% include "inc/core-contacts.html" %}
+            {% coreContacts %}
         {% endif %}
     {% endblock sidebar %}
     

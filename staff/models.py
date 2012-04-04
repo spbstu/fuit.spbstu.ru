@@ -9,6 +9,8 @@ class EducationDepartments(models.Model):
     short_description = models.TextField("Краткое описание кафедры")
     description = models.TextField("Описание кафедры")
     sitename = models.URLField("Адрес сайта", blank=True)
+    phone = models.CharField("Телефон", max_length=24, blank=True)
+    email = models.EmailField("Email", max_length=64, blank=True)
 
     class Meta:
         verbose_name = "Кафедра"
@@ -57,6 +59,8 @@ class Persons(models.Model):
 class OfficialDepartments(models.Model):
     title = models.CharField("Название отдела", max_length=64)
     info = models.TextField("Дополнительная информация", blank=True)
+    phone = models.CharField("Телефон", max_length=24, blank=True)
+    email = models.EmailField("Email", max_length=64, blank=True)
 
     class Meta:
         verbose_name = 'Подразделение'
@@ -68,7 +72,7 @@ class OfficialDepartments(models.Model):
 
 class Positions(models.Model):
     title = models.CharField("Наименование", max_length=64)
-    department = models.ForeignKey("OfficialDepartments", verbose_name='Подразделение')
+    department = models.ForeignKey("OfficialDepartments", verbose_name='Подразделение', related_name='department_positions')
 
     class Meta:
         verbose_name = 'Должность'
