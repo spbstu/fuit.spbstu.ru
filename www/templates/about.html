@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load staff_tags %}
+{% load pages_tags %}
+
+{% block content %}
+    <h1>{{ flatpage.title }}</h1>
+    {{ flatpage.content|safe }}
+
+    {% attachmentsList %}
+
+    {% educationDepartments %}
+{% endblock content%}
+  

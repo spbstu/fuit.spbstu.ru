@@ -1,0 +1,15 @@
+<section class="three-column">
+{% for department in departments %}
+    <article class="column">
+        <div class="column-content">
+            <h3>{{ department.title }}</h3>
+
+            {{ department.short_description|safe }}
+
+            {% if department.sitename %}
+                <p>Сайт кафедры: <a href="{{ department.sitename }}">{{ department.sitename }}</a>
+            {% endif %}
+        </div>
+    </article>
+{% endfor %}
+</section>
