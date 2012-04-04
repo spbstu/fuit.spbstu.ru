@@ -1,10 +1,12 @@
 #-*- coding: utf8 -*-
 from django.contrib import admin
-from staff.models import *
 
-admin.site.register(EducationDepartments)
+from staff.models import *
+from fuit.admin import ExtAdmin
+
+admin.site.register(EducationDepartments, ExtAdmin)
 admin.site.register(Buildings)
-admin.site.register(Persons)
-admin.site.register(OfficialDepartments)
+admin.site.register(Persons, ExtAdmin)
+admin.site.register(OfficialDepartments, ExtAdmin)
 admin.site.register(Positions)
 admin.site.register(PersonToPosition)
