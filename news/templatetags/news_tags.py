@@ -1,8 +1,10 @@
 import datetime
 import re
+
 from django import template
-from news.models import GlobalNews, DeansNews
 from django.db.models import Max, Min
+
+from news.models import GlobalNews, DeansNews
 
 register = template.Library()
 
