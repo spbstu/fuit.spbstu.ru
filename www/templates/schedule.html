@@ -27,7 +27,27 @@
   <div id="content">
     {% block content %}
         <h1>Расписание группы {{ group }}</h1>
-        
+
+        <p>
+            {% if week == False %}
+                Полное расписание
+            {% else %}
+                <a href="/for-students/schedule/{{ group_id }}/">Полное расписание</a>
+            {% endif %}
+            |
+            {% if week != 'odd' %}
+                <a href="/for-students/schedule/{{ group_id }}/odd/">Расписание нечетной недели</a>
+            {% else %}
+                Расписание нечетной недели
+            {% endif %}
+            |
+            {% if week != 'even' %}
+                <a href="/for-students/schedule/{{ group_id }}/even/">Расписание четной недели</a>
+            {% else %}
+                Расписание четной недели
+            {% endif %}
+        </p>
+
         {% for day in days %}
             <div class="schedule-day">
             <h3>{{ day.day }}</h3>

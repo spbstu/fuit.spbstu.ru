@@ -10,7 +10,7 @@ def groups_list(request):
     return render(request, 'base.html', {'content': groups})
 
 
-def schedule(request, group):
+def schedule(request, group, week=None):
     days = [
             {
             'day':'Пн',
@@ -43,12 +43,28 @@ def schedule(request, group):
     ]
     group_number = group.replace('-', '/')
     group_id = Groups.objects.get(number=group_number)
-    for group_class in Classes.objects.select_related().filter(group=group_id):
+    classes = Classes.objects.select_related().filter(group=group_id)
+
+    if week == 'odd':
+        week_exclude = 2
+    elif week == 'even':
+        week_exclude = 1
+    else:
+        week_exclude = False
+
+    if week_exclude:
+        classes = classes.exclude(reccurance=week_exclude)
+    for group_class in classes:
         for i in (int(e) for e in group_class.day.split(',')):
             days[i]['classes'].append(group_class)
+
     schedule.title = group_number
+
     return render(request, 'schedule.html',
-        {'group': group_number, 'days': days})
+        {'group': group_number,
+        'days': days,
+        'week': week,
+        'group_id': group})
 
 
 def exam(request, group):

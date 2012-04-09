@@ -3,5 +3,5 @@ from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('fuit.schedule.views',
     # Examples:
-    url(r'^(?P<group>.+)/$', 'schedule'),
+    url(r'^(?P<group>[0-9\-_]+)/((?P<week>(odd|even)?)/)?$', 'schedule'),
 )
