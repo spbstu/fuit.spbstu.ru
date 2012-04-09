@@ -4,9 +4,11 @@ from schedule.models import Groups, Classes, Exams
 from django.shortcuts import render
 from django.template import RequestContext, Context
 
+
 def groups_list(request):
     groups = Groups.objects.all()
     return render(request, 'base.html', {'content': groups})
+
 
 def schedule(request, group):
     days = [
@@ -45,4 +47,14 @@ def schedule(request, group):
         for i in (int(e) for e in group_class.day.split(',')):
             days[i]['classes'].append(group_class)
     schedule.title = group_number
-    return render(request,'schedule.html', {'group': group_number, 'days': days})
+    return render(request, 'schedule.html',
+        {'group': group_number, 'days': days})
+
+
+def exam(request, group):
+    group_number = group.replace('-', '/')
+    group_id = Groups.objects.get(number=group_number)
+    exams = Exams.objects.filter(group=group_id).order_by('dateStart', 'time')
+    exam.title = group_number
+    return render(request, 'exams.html',
+        {'exams': exams, 'group': group_number})

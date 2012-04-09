@@ -67,9 +67,11 @@ class Classes(Meeting):
     def __unicode__(self):
         return u"%2s - %2s (%2s)" % (self.group, self.subject, self.day)
 
+
 class Exams(Meeting):
     class Meta:
         verbose_name = u'Экзамен'
         verbose_name_plural = u'Экзамены'
+
     def __unicode__(self):
-        return "%2s - %2s (%2s)" % (self.group, self.subject, self.dateStart)
+        return u"%2s - %2s (%2s)" % (self.group, self.subject, self.dateStart)

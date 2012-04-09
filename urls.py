@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^for-students/schedule/', include('schedule.urls')),
+    url(r'^for-students/exams/(?P<group>.+)/$', 'schedule.views.exam'),
     url(r'^scientific-work/', include('scientific.urls')),
 
     url(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
