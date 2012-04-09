@@ -18,6 +18,8 @@ def coreContacts(context):
     departments = []
     deansoffice = OfficialDepartments.objects.get(title='Деканат')
     departments.append({
+        'title': u'Деканат',
+        'longtitle': u'Деканат Факультета управления и информационных технологий СПбГТУ',
         'department': deansoffice,
         'persons': []
     })
@@ -30,10 +32,10 @@ def coreContacts(context):
 
     edu_departments = EducationDepartments.objects.order_by('index')
 
-    print edu_departments
-
     for department in edu_departments:
         departments.append({
+            'title': u"Кафедра %s" % (department.abbr),
+            'longtitle': u"Кафедра «%s»" % (department.title),
             'department': department,
             'persons': PersonToPosition.objects.filter(education_department=department.id)
         })
