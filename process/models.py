@@ -25,5 +25,11 @@ class Term(models.Model):
 
 
 def term_attr(date_obj, date=datetime.date.today()):
-    term = Term.objects.get(record_week_start__gt=date + datetime.timedelta(days=30))
-    return term.__getattribute__(date_obj)
+    try:
+        term = Term.objects.get(record_week_start__gt=date + datetime.timedelta(days=30))
+        result = term.__getattribute__(date_obj)
+    except Exception:
+        result = date
+        pass
+
+    return result
