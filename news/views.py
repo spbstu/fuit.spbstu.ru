@@ -2,7 +2,7 @@
 
 import datetime
 from django.conf.urls.defaults import patterns, include, url
-from fuit.news.models import News, GlobalNews, DeansNews
+from news.models import News, GlobalNews, DeansNews
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 

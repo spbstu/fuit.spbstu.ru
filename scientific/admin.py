@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from scientific.models import *
-from fuit.admin import ExtAdmin
+from fuitadmin import ExtAdmin
 
 admin.site.register(Conference, ExtAdmin)
 admin.site.register(Grant, ExtAdmin)

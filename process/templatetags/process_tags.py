@@ -25,7 +25,7 @@ def process_week(date = datetime.date.today()):
         else:
             week_name = u'Допсессия'
     except ObjectDoesNotExist:
-        term = null
+        term = None
         week_name = u'Каникулы'
 
     return {'week_name': week_name, 'term': None, 'now':

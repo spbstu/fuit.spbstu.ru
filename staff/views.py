@@ -4,7 +4,7 @@
 from django.shortcuts import render
 from django.template import RequestContext
 
-from fuit.staff.models import *
+from staff.models import *
 
 y_api_keys = {
     'fuit.loc': 'ANMapE0BAAAA5B7KVwIAPinBel3QZEqldnD4EL3eGYWw8bIAAAAAAAAAAAD4tiWdLrZ-AvxxqCt8aG9YO97tfQ==',

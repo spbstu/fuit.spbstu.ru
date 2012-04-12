@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.flatpages.models import FlatPage
 
 from pages.models import *
-from fuit.admin import ExtAdmin
+from fuitadmin import ExtAdmin
 
 
 admin.site.register(Page, ExtAdmin)

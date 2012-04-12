@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from staff.models import *
-from fuit.admin import ExtAdmin
+from fuitadmin import ExtAdmin
 
 admin.site.register(EducationDepartments, ExtAdmin)
 admin.site.register(Buildings)
