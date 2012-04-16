@@ -16,7 +16,10 @@ y_api_keys = {
 
 
 def get_map(request):
-    host, port = request.META['HTTP_HOST'].split(':')
+    try:
+        host, port = request.META['HTTP_HOST'].split(':')
+    except:
+        host = request.META['SERVER_NAME']
     api_key = y_api_keys[host]
     buildings = Buildings.objects.all()
 
