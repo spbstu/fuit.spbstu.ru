@@ -27,19 +27,28 @@ register = template.Library()
 
 @register.inclusion_tag('menu_items.html', takes_context=True)
 def menu(context):
-    url_regex = '^/' + context['request'].path.split('/')[1] + '/[^/]+/$'
+    try:
+        url_regex = '^/' + context['request'].path.split('/')[1] + '/[^/]+/$'
+        request = context['request']
+    except:
+        url_regex = '^/$'
+        request = None
     return {
             'all': Page.objects.filter(show_in_menu='1',
                                        url__regex='^/[^/]+/$'),
             'nested_pages': Page.objects.filter(show_in_menu='1',
                                           url__regex=url_regex),
             'nested_views': MenuItem.objects.filter(url__regex=url_regex),
-            'request': context['request']
+            'request': request
             }
 
 
 @register.inclusion_tag('menu_full.html', takes_context=True)
 def menuFull(context):
+    try:
+        request = context['request']
+    except:
+        request = None
     url_regex = '^/([^/]+/){1,2}$'
     raw_pages = Page.objects.filter(show_in_menu='1', url__regex=url_regex)
     raw_menu_items = MenuItem.objects.filter(url__regex=url_regex)
@@ -68,7 +77,7 @@ def menuFull(context):
 
     return {
             'pages': pages,
-            'request': context['request']
+            'request': request
             }
 
 
@@ -91,45 +100,51 @@ def attachmentsList(context):
 
 @register.inclusion_tag('breadcrumbs.html', takes_context=True)
 def breadcrumbs(context, title=""):
-    bc = context['request'].path.strip('/')
-    bc = bc.split('/')
-    path = '/'
-    pages = []
+    try:
+        bc = context['request'].path.strip('/')
+        bc = bc.split('/')
+        path = '/'
+        pages = []
 
-    for i in bc:
+        for i in bc:
+            try:
+                pages.append(Page.objects.get(url=path))
+                path = path + i + '/'
+            except:
+                view, args, kwargs = resolve(path)
+
+                pages.append({'url': path, 'title': view.title % kwargs})
+                path = path + i + '/'
+
         try:
             pages.append(Page.objects.get(url=path))
-            path = path + i + '/'
         except:
-            view, args, kwargs = resolve(path)
-
-            print view.title
-            print path
-
-            pages.append({'url': path, 'title': view.title % kwargs})
-            path = path + i + '/'
-
-    try:
-        pages.append(Page.objects.get(url=path))
+            view, args, kwargs = resolve(context['request'].path)
+            pages.append({'url': context['request'].path, 'title': view.title %
+                kwargs})
+        request = context['request']
     except:
-        view, args, kwargs = resolve(context['request'].path)
-        pages.append({'url': context['request'].path, 'title': view.title %
-            kwargs})
+        pages = [{'url': '/', 'title': 'Главная'}, {'url': '/404/', 'title': 'Ошибка'}]
+        request = {'path': '/404/'}
 
     return {
             'pages': pages,
-            'request': context['request']
+            'request': request
             }
 
 
 @register.inclusion_tag('title.html', takes_context=True)
 def title(context, title=""):
-    is_front = (context['request'].path == '/')
     try:
-        title = Page.objects.get(url=context['request'].path).title
+        is_front = (context['request'].path == '/')
+        try:
+            title = Page.objects.get(url=context['request'].path).title
+        except:
+            view, args, kwargs = resolve(context['request'].path)
+            title = view.title
     except:
-        view, args, kwargs = resolve(context['request'].path)
-        title = view.title
+        title = "Ошибка"
+        is_front = False
 
     return {'title': title, 'is_front': is_front}
 

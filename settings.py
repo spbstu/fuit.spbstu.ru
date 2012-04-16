@@ -3,19 +3,21 @@
 
 import os
 
-DEBUG = True
-TEMPLATE_DEBUG = False
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',     # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/vita/fuit/data.db',                          # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_ROOT, 'data.db'),                          # Or path to database file if using sqlite3.
         'USER': '',                                 # Not used with sqlite3.
         'PASSWORD': '',                             # Not used sqlite3with sqlite3.
         'HOST': '',                                 # Set to empty string for localhost. Not used with sqlite3.
@@ -46,8 +48,6 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
-
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'uploads')
@@ -64,7 +64,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = "http://fuit.avalon.ru/static/"
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
