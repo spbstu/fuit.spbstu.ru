@@ -2,11 +2,11 @@
 # Create your views here.
 
 from django.shortcuts import render
-from django.template import RequestContext
 
 from staff.models import *
 
 y_api_keys = {
+    '127.0.0.1': 'ANMapE0BAAAA5B7KVwIAPinBel3QZEqldnD4EL3eGYWw8bIAAAAAAAAAAAD4tiWdLrZ-AvxxqCt8aG9YO97tfQ==',
     'fuit.loc': 'ANMapE0BAAAA5B7KVwIAPinBel3QZEqldnD4EL3eGYWw8bIAAAAAAAAAAAD4tiWdLrZ-AvxxqCt8aG9YO97tfQ==',
     'fuit.avalon.ru': 'AJY0pE0BAAAABoK8WQMAjlOmNwkBzs7pyidk1voaV4UFNKkAAAAAAAAAAABYafXs14VRNaWG94-wf3RlIRNZAA==',
     's.fuit.avalon.ru': 'AJY0pE0BAAAABoK8WQMAjlOmNwkBzs7pyidk1voaV4UFNKkAAAAAAAAAAABYafXs14VRNaWG94-wf3RlIRNZAA==',
