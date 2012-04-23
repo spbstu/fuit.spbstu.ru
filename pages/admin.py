@@ -5,7 +5,11 @@ from pages.models import *
 from fuitadmin import ExtAdmin
 
 
-admin.site.register(Page, ExtAdmin)
+class PagesAdmin(ExtAdmin):
+    list_display = ('title', 'url', 'show_in_menu', 'show_sidebar')
+    list_display_links = ('title',)
+
+admin.site.register(Page, PagesAdmin)
 admin.site.register(Attachment)
 admin.site.register(PageAttachments)
 admin.site.register(MenuItem)
