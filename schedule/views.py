@@ -56,7 +56,7 @@ def schedule(request, group, week=None):
         classes = classes.exclude(reccurance=week_exclude)
     for group_class in classes:
         for i in (int(e) for e in group_class.day.split(',')):
-            days[i]['classes'].append(group_class)
+            days[i - 1]['classes'].append(group_class)
 
     schedule.title = group_number
 
