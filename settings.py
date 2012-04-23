@@ -3,10 +3,11 @@
 
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
+    ('Mikhail Baranov', 'mikhailb@avalon.ru'),
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -64,7 +65,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "http://fuit.avalon.ru/static/"
+STATIC_URL = "http://s.fuit.avalon.ru/"
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
@@ -131,7 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'filebrowser',
+#    'filebrowser',
     'grappelli',
 
     'django.contrib.admin',
