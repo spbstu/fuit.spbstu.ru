@@ -43,7 +43,7 @@ def schedule(request, group, week=None):
     ]
     group_number = group.replace('-', '/')
     group_id = Groups.objects.get(number=group_number)
-    classes = Classes.objects.select_related().filter(group=group_id)
+    classes = Classes.objects.select_related().filter(group=group_id).order_by('time')
 
     if week == 'odd':
         week_exclude = 2
