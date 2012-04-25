@@ -11,9 +11,19 @@
       <p>{{ person.person.graduate }}</p>
     {% endif %}
     
-    {% if person.person.office %}
+    {% if person.person.office or person.person.phone or person.person.email %}
       <h4>Контактаная информация</h4>
-      {{ person.person.office|safe }}
+      <ul>
+        {% if person.person.phone %}
+          <li>{{ person.person.phone|safe }}</li>
+        {% endif %}
+        {% if person.person.email %}
+          <li><a href="mailto:{{ person.person.email }}">{{ person.person.email }}</a></li>
+        {% endif %}
+        {% if person.person.office %}
+          <li>{{ person.person.office|safe }}</li>
+        {% endif %}
+      </ul>
     {% endif %}
     
     {% if person.person.meeting_time %}
