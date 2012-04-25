@@ -63,7 +63,7 @@
               {% include "contacts/person.html" %}
             {% endfor %}
             {% if department.subdepartments %}
-            <div class="three-columns">
+            <div class="three-column">
               {% for key, subdepartment in department.subdepartments.items %}
                 <div class="column">
                   <h4>{{ subdepartment.title }}</h4>

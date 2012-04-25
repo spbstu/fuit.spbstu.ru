@@ -12,7 +12,7 @@
     {% endif %}
     
     {% if person.person.office or person.person.phone or person.person.email %}
-      <h4>Контактаная информация</h4>
+      <h4>Контактная информация</h4>
       <ul>
         {% if person.person.phone %}
           <li>{{ person.person.phone|safe }}</li>
