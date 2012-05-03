@@ -174,3 +174,8 @@ def date_interval(context, date_first, date_second):
 @register.filter
 def key(d, key_name):
     return d[key_name]
+
+
+@register.filter
+def index(l, i):
+    return l[i]

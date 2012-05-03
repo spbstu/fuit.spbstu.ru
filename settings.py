@@ -140,8 +140,8 @@ INSTALLED_APPS = (
     'schedule',
     'process',
     'scientific',
-    'staff'
-
+    'staff',
+    'profburo',
 )
 
 # A sample logging configuration. The only tangible logging

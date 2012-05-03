@@ -1,0 +1,64 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+{% load pages_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+        <h1>Документы</h1>
+
+        <nav class="toc tabs">
+          <ul>
+            {% for doc_type in doc_types %}
+              <li class="tab-item {% if forloop.first %}current{% endif %}"><a href="#type_{{ doc_type.id }}">{{ doc_type.title_plural }}</a></li>
+            {% endfor %}  
+          </ul>
+        </nav>
+        
+        {% for doc_type in doc_types %}
+          <section class="tab-content {% if forloop.first %}tab-content-visible{% endif %}" id="type_{{ doc_type.id }}">
+            {% for documents_list in documents|key:doc_type.id %}
+              {% for document in documents_list %}
+                {% if forloop.first %}
+                  <h2>{{ months|index:forloop.parentloop.counter0 }}</h2>
+                {% endif %}
+                <p><a href="{{ MEDIA_URL }}{{ document.attachment }}">{{ document.title }} от {{ document.date|date:"d.m.Y г." }}</a></p>
+              {% endfor %}
+            {% endfor %}
+          </section>
+        {% endfor %}
+            
+    {% endblock content%}
+  </div>
+  
+</div>
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

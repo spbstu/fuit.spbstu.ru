@@ -13,10 +13,9 @@ urlpatterns = patterns('',
     url(r'^news/', include('news.urls'), {'scope': 'global'}),
     url(r'^deannews/', include('news.urls'), {'scope': 'deannews'}),
     url(r'^profburo/news/', include('news.urls'), {'scope': 'profburo'}),
+    url(r'^profburo/documents/', 'profburo.views.documents'),
     url(r'^about/contacts/', 'staff.views.contacts'),
     url(r'^about/departments/', 'staff.views.departments'),
-    #url(r'^tinymce/', include('tinymce.urls')),
-#    url(r'^tinymce/filebrowser/', include('filebrowser.urls')),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^admin/', include(admin.site.urls)),
@@ -26,8 +25,6 @@ urlpatterns = patterns('',
     url(r'^scientific-work/', include('scientific.urls')),
 
     url(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    #url(r'', include('www.urls')),
-
 )
 
 urlpatterns += staticfiles_urlpatterns()
