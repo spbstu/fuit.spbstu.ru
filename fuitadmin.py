@@ -1,9 +1,10 @@
 from django.contrib.admin import ModelAdmin
+from settings import TINYMCE_SETUP, TINYMCE_JS_URL 
 
 
 class ExtAdmin(ModelAdmin):
     class Media:
         js = [
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/grappelli/tinymce_setup/tinymce_setup.js',
+            TINYMCE_JS_URL,
+            TINYMCE_SETUP,
             ]

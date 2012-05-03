@@ -58,6 +58,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 if socket.gethostname() == 'fuit.avalon.ru':
     STATIC_URL = "http://s.fuit.avalon.ru/"
+    MEDIA_URL = '/static/'
 else:
     STATIC_URL = "/static/"
     MEDIA_URL = '/media/'
@@ -127,7 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'filebrowser',
+    'filebrowser',
     'grappelli',
 
     'django.contrib.admin',
@@ -166,14 +167,19 @@ LOGGING = {
     }
 }
 
-# TinyMCE Settings
-TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
-TINYMCE_JS_ROOT = STATIC_URL + 'js/tiny_mce'
+# Grappelli
 
-#TINYMCE_FILEBROWSER = False
+GRAPPELLI_ADMIN_TITLE = "ФУИТ СПбГПУ. Управление сайтом"
+
+# TinyMCE Settings
+TINYMCE_JS_URL = STATIC_URL + 'grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = STATIC_URL + 'grappelli/tinymce/jscripts/tiny_mce/'
+TINYMCE_SETUP = STATIC_URL + 'grappelli/tinymce_setup/tinymce_setup.js'
+
+TINYMCE_FILEBROWSER = True
 TINYMCE_DEFAULT_CONFIG = {
     #'mode' : "textareas",
-    #'theme': "advanced",
+    'theme': "simple",
     #'theme_advanced_toolbar_location' : "top",
     #'theme_advanced_resizing' : True,
     'extended_valid_elements': "article[name|href|target|title|onclick],section",
@@ -181,4 +187,6 @@ TINYMCE_DEFAULT_CONFIG = {
 
 
 # Filebrowser Settings
-FILEBROWSER_DIRECTORY = MEDIA_ROOT
+FILEBROWSER_MEDIA_ROOT = MEDIA_ROOT
+FILEBROWSER_DIRECTORY = ''
+FILEBROWSER_MEDIA_URL = MEDIA_URL

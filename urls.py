@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
+from filebrowser.sites import site
 from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -13,10 +14,10 @@ urlpatterns = patterns('',
     url(r'^deannews/', include('news.urls'), {'scope': 'deannews'}),
     url(r'^about/contacts/', 'staff.views.contacts'),
     url(r'^about/departments/', 'staff.views.departments'),
-#    url(r'^tinymce/', include('tinymce.urls')),
-    #url(r'^tinymce/filebrowser/', include('filebrowser.urls')),
+    #url(r'^tinymce/', include('tinymce.urls')),
+#    url(r'^tinymce/filebrowser/', include('filebrowser.urls')),
     url(r'^grappelli/', include('grappelli.urls')),
-#    url(r'^admin/filebrowser/', include('filebrowser.urls')),
+    url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^for-students/schedule/', include('schedule.urls')),
