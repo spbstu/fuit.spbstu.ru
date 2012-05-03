@@ -31,7 +31,7 @@ def get_map(request):
 
 def contacts(request):
     map_dict = get_map(request)
-    persons = PersonToPosition.objects.all()
+    persons = PersonToPosition.objects.order_by('position__order')
     departments = {}
 
     for person in persons:
@@ -45,7 +45,7 @@ def contacts(request):
             }
 
         if (person.education_department):
-            education_department_id = person.education_department.id
+            education_department_id = person.education_department.index
             if(education_department_id not in departments[department_id]['subdepartments']):
                 departments[department_id]['subdepartments'][education_department_id] = {
                     'title': person.education_department.title,
@@ -55,6 +55,12 @@ def contacts(request):
             departments[department_id]['subdepartments'][education_department_id]['persons'].append(person)
         else:
             departments[department_id]['persons'].append(person)
+
+    for d_id, d in departments.iteritems():
+        if d['subdepartments']:
+            l = d['subdepartments'].keys()
+            l.sort()
+            d['subdepartments_keys'] = l
 
     return render(request, 'contacts.html', {
         'departments': departments,

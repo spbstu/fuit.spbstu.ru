@@ -8,18 +8,42 @@
     overflow:hidden;
     }
 .person {
-  float:left;
-  width:30%;
-  margin-right:3%;
+  display: inline-block;
+  vertical-align: top;
+  width:300px;
+  min-height:180px;
+  margin-right:16px;
+  margin-bottom:16px;
+  padding:12px;
+  background: #FFF;
+  border: solid 1px #DADADA;
+  border-radius: 8px;
   }
   .person .photo {
-    float:right;
+    float:left;
+    margin-right:8px;
     }
     .person .photo img {
       padding:4px;
       border:solid 1px #CCC;
       background:#FFF;
       }
+  .person-details {
+    margin-left: 100px;
+  }
+  .person-name {
+    margin: 0 0 2px;
+    font-size:16px;
+  }
+  .person-title {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #666;
+  }
+  .person-graduate {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
   .three-column .person {
     float: none;
     width:auto;

@@ -64,13 +64,8 @@
             {% endfor %}
             {% if department.subdepartments %}
             <div class="three-column">
-              {% for key, subdepartment in department.subdepartments.items %}
-                <div class="column">
-                  <h4 style="height:3em">{{ subdepartment.title }}</h4>
-                  {% for person in subdepartment.persons %}
-                    {% include "contacts/person.html" %}
-                  {% endfor %}
-                </div>
+              {% for key in department.subdepartments_keys %}
+                {% include "contacts/subdepartments.html" with subdepartment=department.subdepartments|key:key %}
               {% endfor %}
             {% endif %}
           </section>

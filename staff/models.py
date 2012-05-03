@@ -73,6 +73,7 @@ class OfficialDepartments(models.Model):
 class Positions(models.Model):
     title = models.CharField("Наименование", max_length=64)
     department = models.ForeignKey("OfficialDepartments", verbose_name='Подразделение', related_name='department_positions')
+    order = models.IntegerField("Порядок вывода", null=True, blank=True)
 
     class Meta:
         verbose_name = 'Должность'
