@@ -35,6 +35,10 @@
     <p class="date"><time>{{ news.date }}</date></p>
     {{ news.text|safe }}
     </section>
+    {% empty %}
+      <section>
+        <p>Новостей пока что нет.</p>  
+      </section>
     {% endfor %}
     </article>
 

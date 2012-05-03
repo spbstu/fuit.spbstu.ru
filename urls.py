@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^news/', include('news.urls'), {'scope': 'global'}),
     url(r'^deannews/', include('news.urls'), {'scope': 'deannews'}),
+    url(r'^profburo/news/', include('news.urls'), {'scope': 'profburo'}),
     url(r'^about/contacts/', 'staff.views.contacts'),
     url(r'^about/departments/', 'staff.views.departments'),
     #url(r'^tinymce/', include('tinymce.urls')),

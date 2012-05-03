@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 #from fuit.news.views import news_archive
 
 urlpatterns = patterns('',

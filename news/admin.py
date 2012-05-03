@@ -1,8 +1,9 @@
 from django.contrib import admin
-from news.models import GlobalNews, DeansNews
+from fuitadmin import ExtAdmin
+from news.models import GlobalNews, DeansNews, ProfburoNews
 
 
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(ExtAdmin):
     fields = (
             'title',
             'text',
@@ -10,14 +11,8 @@ class NewsAdmin(admin.ModelAdmin):
             'show'
             )
 
-    class Media:
-        js = [
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/grappelli/tinymce_setup/tinymce_setup.js',
-            ]
 
-
-class DeansNewsAdmin(NewsAdmin):
+class DeansNewsAdmin(ExtAdmin):
     fields = (
             'title',
             'text',
@@ -27,4 +22,5 @@ class DeansNewsAdmin(NewsAdmin):
             )
 
 admin.site.register(GlobalNews, NewsAdmin)
+admin.site.register(ProfburoNews, NewsAdmin)
 admin.site.register(DeansNews, DeansNewsAdmin)

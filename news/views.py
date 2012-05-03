@@ -1,15 +1,18 @@
 # -*- coding: utf8 -*-
 
 import datetime
-from django.conf.urls.defaults import patterns, include, url
-from news.models import News, GlobalNews, DeansNews
+from news.models import GlobalNews, DeansNews, ProfburoNews
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 
 def news_archive_by_year(request, scope, year=None):
-    newsObj = {'global': GlobalNews, 'deannews': DeansNews}[scope]
-    title = {'global': 'Архив новостей', 'deannews': 'Архив объявлений деканата'}[scope]
+    newsObj = {'global': GlobalNews,
+        'deannews': DeansNews,
+        'profburo': ProfburoNews}[scope]
+    title = {'global': 'Архив новостей',
+        'deannews': 'Архив объявлений деканата',
+        'profburo': 'Новости профбюро'}[scope]
     if year:
         news = newsObj.objects.filter(date__year=year)
     else:
