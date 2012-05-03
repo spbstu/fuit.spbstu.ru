@@ -39,10 +39,10 @@
         
         {% for doc_type in doc_types %}
           <section class="tab-content {% if forloop.first %}tab-content-visible{% endif %}" id="type_{{ doc_type.id }}">
-            {% for documents_list in documents|key:doc_type.id %}
+            {% for documents_list in documents|key:doc_type.id reversed %}
               {% for document in documents_list %}
                 {% if forloop.first %}
-                  <h2>{{ months|index:forloop.parentloop.counter0 }}</h2>
+                  <h2>{{ months|from_date:document.date }}</h2>
                 {% endif %}
                 <p><a href="{{ MEDIA_URL }}{{ document.attachment }}">{{ document.title }} от {{ document.date|date:"d.m.Y г." }}</a></p>
               {% endfor %}

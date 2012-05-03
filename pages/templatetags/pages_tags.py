@@ -177,5 +177,10 @@ def key(d, key_name):
 
 
 @register.filter
+def from_date(l, dt):
+    return l[dt.month]
+
+
+@register.filter
 def index(l, i):
-    return l[i]
+    return l[int(i)]
