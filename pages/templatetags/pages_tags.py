@@ -35,7 +35,7 @@ def menu(context):
         request = None
     return {
             'all': Page.objects.filter(show_in_menu='1',
-                                       url__regex='^/[^/]+/$'),
+                                       url__regex='^/[^/]+/$').order_by('id'),
             'nested_pages': Page.objects.filter(show_in_menu='1',
                                           url__regex=url_regex),
             'nested_views': MenuItem.objects.filter(url__regex=url_regex),
@@ -50,7 +50,7 @@ def menuFull(context):
     except:
         request = None
     url_regex = '^/([^/]+/){1,2}$'
-    raw_pages = Page.objects.filter(show_in_menu='1', url__regex=url_regex)
+    raw_pages = Page.objects.filter(show_in_menu='1', url__regex=url_regex).order_by('id')
     raw_menu_items = MenuItem.objects.filter(url__regex=url_regex)
     level1_re = re.compile('^/[^/]+/$')
     parent_re = re.compile('^/[^/]+/')

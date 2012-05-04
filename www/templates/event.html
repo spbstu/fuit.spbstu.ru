@@ -1,0 +1,51 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+{% load pages_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+        <h1>{{ event.title }}</h1>
+
+        <p class="date">{{ event.date }}</p>
+
+        {% if event.text %}
+          {{ event.text|safe }}
+        {% else %}
+          {{ event.description|safe }}  
+        {% endif %}
+        
+    {% endblock content%}
+  </div>
+  
+</div>
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

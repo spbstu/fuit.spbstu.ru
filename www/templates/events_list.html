@@ -1,0 +1,69 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+{% load pages_tags %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="ru">
+{% include "inc/head-content.html" %}
+<body>
+
+<div class="wrapper">
+
+ {% block header %}
+  {% include "inc/header.html" %}
+ {% endblock header %}
+
+ {% block breadcrumbs %}
+      {% breadcrumbs %}
+ {% endblock breadcrumbs %}
+ 
+ {% block menu-main %}
+  
+  {% menu %}
+  
+ {% endblock menu-main %}
+ 
+  <div id="content">
+    {% block content %}
+        <h1>Мероприятия</h1>
+
+        {% for event in events %}
+          <section >
+            <h2><a href="/profburo/events/{{ event.id }}/">{{ event.title }}</a></h2>
+            
+            <p class="date">{{ event.date }}</p>
+
+            {{ event.description|safe }}
+
+            {% if event.text %}
+            <p><a href="/profburo/events/{{ event.id }}/">Читать полностью</a> »»
+            {% endif %}
+          </section>
+        {% endfor %}
+
+        {% if pager %}
+          <p class="pager">
+            {% for page in pager %}
+              {% if page == offset %}
+                {{ page|add:"1" }}
+              {% else %}
+                <a href="/profburo/events/archive/{{ page }}/">{{ page|add:"1" }}</a>
+              {% endif %}
+            {% endfor %}
+          </p>
+        {% endif %}
+            
+    {% endblock content%}
+  </div>
+  
+</div>
+
+{% include "inc/full-menu.html" %}
+
+
+{% include "inc/footer.html" %}
+
+</body>
+</html>

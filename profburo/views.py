@@ -1,6 +1,8 @@
 #-*- coding: utf8 -*-
 # Create your views here.
 
+import math
+
 from django.shortcuts import render
 
 from profburo.models import *
@@ -28,3 +30,31 @@ def documents(request):
         })
 
 documents.title = 'Документы'
+
+
+def events_list(request, offset=0):
+    try:
+        offset = int(offset)
+    except:
+        offset = 0
+    items_per_page = 1
+    events = Event.objects.filter(is_public=True).order_by('-date')
+    count = len(events)
+
+    return render(request, 'events_list.html', {
+        'pager': [page for page in range(0, int(math.floor(count / items_per_page)))],
+        'offset': offset,
+        'events': events[offset * items_per_page:(offset + 1) * items_per_page]
+        })
+
+events_list.title = 'Мероприятия'
+
+
+def event_by_id(request, id):
+    event = Event.objects.get(id=id)
+
+    event_by_id.title = event.title
+
+    return render(request, 'event.html', {
+        'event': event
+        })

@@ -6,3 +6,4 @@ from fuitadmin import ExtAdmin
 
 admin.site.register(DocType, ExtAdmin)
 admin.site.register(Document)
+admin.site.register(Event, ExtAdmin)

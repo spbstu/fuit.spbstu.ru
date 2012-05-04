@@ -2,7 +2,7 @@
 <div class="shadow">
     <div class="wrapper">
         <ul>
-    {% for i, page in pages.items reversed %}
+    {% for i, page in pages.items %}
     <li class="column">
         <h3 {% ifequal page.page.url request.path %}
             class="current"

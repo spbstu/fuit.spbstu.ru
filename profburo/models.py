@@ -30,3 +30,18 @@ class Document(models.Model):
 
     def __unicode__(self):
         return u'%s (%s)' % (self.title, self.date)
+
+
+class Event(models.Model):
+    title = models.CharField('Название', max_length=128)
+    date = models.DateField('Дата проведения', default=datetime.date.today)
+    description = models.TextField('Краткое описание')
+    text = models.TextField('Описание', null=True, blank=True)
+    is_public = models.BooleanField('Опубликовано', default=False)
+
+    class Meta:
+        verbose_name = 'Мероприятие'
+        verbose_name_plural = 'Мероприятия'
+
+    def __unicode__(self):
+        return self.title
