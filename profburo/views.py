@@ -37,7 +37,7 @@ def events_list(request, offset=0):
         offset = int(offset)
     except:
         offset = 0
-    items_per_page = 1
+    items_per_page = 7
     events = Event.objects.filter(is_public=True).order_by('-date')
     count = len(events)
 
