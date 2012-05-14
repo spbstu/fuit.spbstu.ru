@@ -26,9 +26,10 @@
  
   <div id="content">
     {% block sidebar %}
-        {% if pages.show_sidebar == true %}
-            {% coreContacts %}
-        {% endif %}
+
+      {% if flatpage.page.show_sidebar %}
+          {% coreContacts %}
+      {% endif %}
     {% endblock sidebar %}
     
     {% block content %}
