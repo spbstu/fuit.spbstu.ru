@@ -1,7 +1,10 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
 {% if files %}
     <ul>
     {% for file in files %}
-        <li><a href="/{{ file.attachment }}"</a>{{ file.title }}</a></li>
+        <li><a href="{{ MEDIA_URL }}{{ file.attachment }}"</a>{{ file.title }}</a></li>
     {% endfor %}
     </ul>
 {% endif %}
