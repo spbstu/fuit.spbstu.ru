@@ -11,7 +11,7 @@ departments = [r'Компьютерные информационные техн�
 
 
 @register.inclusion_tag('groups_list.html')
-def groups_list(current_group=False):
+def groups_list(current_group=False, prefix="/for-students/schedule/"):
     groups = []
     for id, department in enumerate(departments):
         x = []
@@ -27,7 +27,7 @@ def groups_list(current_group=False):
         level = 1
     else:
         level = 0
-    return {'groups': groups, 'level': level, 'departments': departments}
+    return {'groups': groups, 'level': level, 'departments': departments, 'prefix': prefix}
 
 
 @register.filter

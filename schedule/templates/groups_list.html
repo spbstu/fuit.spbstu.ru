@@ -7,10 +7,10 @@
     <p>
         {% for group_uri, group in year.items %}
             {% if level == 1 %}
-                <a href="../{{ group_uri }}" class="group-number 
+                <a href="{{ prefix }}{{ group_uri }}/" class="group-number 
                     {{ group.css_class }}">{{ group.number }}</a>
                 {% else %}
-                <a href="./{{ group_uri }}" class="group-number">
+                <a href="{{ prefix }}{{ group_uri }}/" class="group-number">
                     {{ group.number }}</a>
                 {% endif %}
                 {% endfor %}
