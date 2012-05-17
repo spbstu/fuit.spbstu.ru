@@ -32,8 +32,15 @@
       {% endif %}
     {% endblock sidebar %}
     
+    {% if perms.pages.change_page and flatpage %}
+
+      <a href="/admin/pages/page/{{ flatpage.page.id }}/?back={{ flatpage.url }}">Редактировать страницу</a>
+
+    {% endif %}
+
     {% block content %}
         <h1>{{ flatpage.title }}</h1>
+
         {{ flatpage.content|safe }}
 
         {% attachmentsList %}
