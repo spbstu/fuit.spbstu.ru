@@ -9,6 +9,7 @@ class Groups(models.Model):
     class Meta:
         verbose_name = u'Группа'
         verbose_name_plural = u'Группы'
+        ordering = ['number']
 
     def __unicode__(self):
         return self.number
@@ -31,6 +32,7 @@ class Subjects(models.Model):
     class Meta:
         verbose_name = u'Предмет'
         verbose_name_plural = u'Предметы'
+        ordering = ['title']
 
     def __unicode__(self):
         return self.title
@@ -42,6 +44,7 @@ class Teachers(models.Model):
     class Meta:
         verbose_name = u'Преподаватель'
         verbose_name_plural = u'Преподаватели'
+        ordering = ['fullName']
 
     def __unicode__(self):
         return self.fullName
@@ -53,6 +56,7 @@ class ClassRooms(models.Model):
     class Meta:
         verbose_name = u'Аудитория'
         verbose_name_plural = u'Аудитории'
+        ordering = ['address']
 
     def __unicode__(self):
         return self.address
@@ -69,6 +73,10 @@ class Meeting(models.Model):
 
     class Meta:
         abstract = True
+
+    @staticmethod
+    def autocomplete_search_fields():
+        return ("id__iexact", "teacher__icontains",)
 
 
 class Classes(Meeting):

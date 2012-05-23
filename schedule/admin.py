@@ -45,14 +45,33 @@ class ClassesAdmin(admin.ModelAdmin):
                     [u'Пн', u'Вт', u'Ср', u'Чт', u'Пт', u'Сб', u'Вс'],
                     range(1, 8))},
         }
+
     list_display = ('group', 'dateStart', 'time', 'reccurance', 'subject')
     list_display_links = ('subject',)
     list_filter = ('group', 'day', 'reccurance')
+
+
+class ExamsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            'fields': ('group',)
+        }),
+        ('Занятие', {
+            'fields': ('subject', 'teacher')
+        }),
+        (None, {
+            'fields': ('eventType', 'dateStart', 'time', 'classRoom')
+        })
+    )
+
+    list_display = ('group', 'dateStart', 'time', 'eventType', 'subject')
+    list_display_links = ('subject',)
+    list_filter = ('group', 'eventType')
 
 admin.site.register(ClassRooms)
 admin.site.register(EventTypes)
 admin.site.register(Groups)
 admin.site.register(Subjects)
 admin.site.register(Teachers)
-admin.site.register(Exams)
+admin.site.register(Exams, ExamsAdmin)
 admin.site.register(Classes, ClassesAdmin)
