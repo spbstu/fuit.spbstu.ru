@@ -1,0 +1,12 @@
+{% extends 'inner-page.html' %}
+
+{% load schedule_tags %}
+
+{% block content %}
+    <h1>{{ flatpage.title }}</h1>
+
+    {% groups_list "False" "/for-students/exams/" %}
+{% endblock content %}
+
+{% block sidebar %}
+{% endblock %}
