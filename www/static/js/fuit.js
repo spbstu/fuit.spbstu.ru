@@ -37,12 +37,36 @@ function showTab(targetTab) {
 	return false;
 }
 
+$.fn.carousel = function(options) {
+	var settings = $.extend({
+			loop:false,
+			autoplay: 5000,
+			transitionDuration: 1000,
+			showPager: true
+		}),
+		step,
+		count,
+		pager;
+
+	this.init = function() {
+		this.each();
+	};
+
+	return this.each(function() {
+
+	});
+};
+
+var c = $(".carousel").carousel();
+
+c.init();
+
 function carousel(el, target) {
-	var content = el.find('.carousel-content');
-	var step = content.find('.carousel-item').width();
-	var count = content.find('.carousel-item').length;
-	var pager = $('.promo-pager li a');
-	if (Math.abs(parseInt(content.css('left'))) < step * (count-1)) {
+	var content = el.find('.carousel-content'),
+		step = content.find('.carousel-item').width(),
+		count = content.find('.carousel-item').length,
+		pager = $('.promo-pager li a');
+	if (Math.abs(parseInt(content.css('left'), 10)) < step * (count-1)) {
 		item++;
 	} else {
 		item = 0;
@@ -50,7 +74,9 @@ function carousel(el, target) {
 	if (target) {
 		item = target;
 		clearInterval(timer);
-		timer = setInterval(function() {carousel($("#promo"), false);}, carouselInterval);
+		timer = setInterval(function() {
+			carousel($("#promo"), false);
+		}, carouselInterval);
 	}
 	content.animate({left: '-'+step*item}, carouselDuration);
 	pager.removeClass('current');
@@ -62,7 +88,7 @@ function carousel(el, target) {
  * Добавление дней недели в расписание
  * Определяем дату на основании значения в таблице
  * Определяем день недели и добавляем к имеющемуся содержимому
- * 
+ *
  * Если событие прошло - добавляем экстра-класс
  */
 
@@ -83,9 +109,9 @@ function scheduleSetExtra() {
  * Функция переключения видимости элементов
  * принимает в себя объект event, откуда дёргает event.data
  * event.data {
- * 	el: $(obj) - ссылка на целевой объект
- * 	showMsg: string - текст, отображаемая у ссылки после скрытия цели
- * 	hideMsg: string - текст, отображаемый у ссылки при видимой цели
+ *  el: $(obj) - ссылка на целевой объект
+ *  showMsg: string - текст, отображаемая у ссылки после скрытия цели
+ *  hideMsg: string - текст, отображаемый у ссылки при видимой цели
  * }
  * */
 
@@ -107,7 +133,7 @@ function init() {
 	frame = ( $.browser.safari ) ? $( 'body' ) : $( 'html' );
 
 /*
- * Установка кастомного хеша 
+ * Установка кастомного хеша
  * и прокрутка страницы к верху
  */
 
@@ -155,8 +181,8 @@ function init() {
  */
 	
 	var consultationToggleData = {
-			el: $('.consultation'), 
-			showMsg: 'Показать консультации', 
+			el: $('.consultation'),
+			showMsg: 'Показать консультации',
 			hideMsg: 'Скрыть консультации'
 		};
 	
@@ -182,9 +208,9 @@ function init() {
 	day.each(scheduleSetExtra);
 	
 	/*
-	 * Преобразование хеша для предотвращения
-	 * "прыжков" станицы к целевому якорю при загрузке страницы
-	 */
+     * Преобразование хеша для предотвращения
+     * "прыжков" станицы к целевому якорю при загрузке страницы
+     */
 	if (window.location.hash) {
 		return showTab(window.location.hash);
 	}

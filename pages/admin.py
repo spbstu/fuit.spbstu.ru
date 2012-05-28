@@ -21,5 +21,6 @@ admin.site.register(Page, PagesAdmin)
 admin.site.register(Attachment)
 admin.site.register(PageAttachments)
 admin.site.register(MenuItem)
+admin.site.register(IndexImages, ExtAdmin)
 
 admin.site.unregister(FlatPage)

@@ -171,6 +171,12 @@ def date_interval(context, date_first, date_second):
     return {'date': result}
 
 
+@register.inclusion_tag('_index_images.html')
+def index_images():
+    images = IndexImages.objects.filter(is_active=True)
+    return {'index_images': images}
+
+
 @register.filter
 def key(d, key_name):
     return d[key_name]

@@ -15,13 +15,28 @@
     }
 .promo-text {
   position:absolute;
-  top:0;
-  left:0;
-  width:25em;
   padding:18px;
   text-align:left;
   background:rgba(255,255,255,.8);
   }
+  .promo-text-left {
+    top:0;
+    right:0;
+    bottom:0;
+    width:25em;
+    }
+  .promo-text-right {
+    left:0;
+    right:0;
+    bottom:0;
+    height:15em;
+    }
+  .promo-text-bottom {
+    top:0;
+    left:0;
+    bottom:0;
+    width:25em;
+    }
   .promo-text h2 {
     margin-top:0;
     margin-bottom:0.3em;
