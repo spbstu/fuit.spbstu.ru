@@ -17,11 +17,11 @@ def groups_list(current_group=False, prefix="/for-students/schedule/"):
         x = []
         groups.append((department, x))
         for year in xrange(1, 6):
-            groups_by_year = {}
-            for group in Groups.objects.filter(number__regex='%s..%s/.' % (year, id + 1)):
+            groups_by_year = []
+            for group in Groups.objects.filter(number__regex='%s..%s/.' % (year, id + 1)).order_by('number'):
                 if current_group:
                     group.css_class = 'current'
-                groups_by_year[group.number.replace('/', '-')] = group
+                groups_by_year.append(group)
             x.append(groups_by_year)
     if current_group:
         level = 1

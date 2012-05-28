@@ -1,21 +1,21 @@
 <!-- TODO: заменить всю эту перду на свой фильтр -->
 <div class="groups-list">
-    {% for department, years in groups %}
+{% for department, years in groups %}
     <div class="department">
     <h3>{{ department }}</h3>
     {% for year in years %}
-    <p>
-        {% for group_uri, group in year.items %}
+        <p>
+        {% for group in year %}
             {% if level == 1 %}
-                <a href="{{ prefix }}{{ group_uri }}/" class="group-number 
+                <a href="{{ prefix }}{{ group.urlize }}/" class="group-number 
                     {{ group.css_class }}">{{ group.number }}</a>
-                {% else %}
-                <a href="{{ prefix }}{{ group_uri }}/" class="group-number">
+            {% else %}
+                <a href="{{ prefix }}{{ group.urlize }}/" class="group-number">
                     {{ group.number }}</a>
-                {% endif %}
-                {% endfor %}
-                </p>
-                {% endfor %}
-            </div>
+            {% endif %}
+        {% endfor %}
+        </p>
     {% endfor %}
+    </div>
+{% endfor %}
 </div>

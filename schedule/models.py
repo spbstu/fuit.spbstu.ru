@@ -14,6 +14,9 @@ class Groups(models.Model):
     def __unicode__(self):
         return self.number
 
+    def urlize(self):
+        return self.number.replace('/', '-')
+
 
 class EventTypes(models.Model):
     title = models.CharField('Тип занятия', max_length=24)
