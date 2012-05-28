@@ -70,7 +70,9 @@ def schedule(request, group, week=None):
 def exam(request, group):
     group_number = group.replace('-', '/')
     group_id = Groups.objects.get(number=group_number)
-    exams = Exams.objects.filter(group=group_id).order_by('dateStart', 'time')
+    all_exams = Exams.objects.filter(group=group_id).order_by('dateStart', 'time')
+    exams = all_exams.exclude(eventType__title="Повторный экзамен")
+    ext_exams = all_exams.filter(eventType__title="Повторный экзамен")
     exam.title = group_number
     return render(request, 'exams.html',
-        {'exams': exams, 'group': group_number})
+        {'exams': exams, 'ext_exams': ext_exams, 'group': group_number})

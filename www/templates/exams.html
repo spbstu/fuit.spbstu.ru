@@ -23,5 +23,20 @@
         </tr>
     {% endfor %}
     </table>
+
+    <h2>Дополнительная сессия</h2>
+
+    <table class="schedule ">
+    {% for exam in ext_exams %}
+        <tr>
+            <td class="date">{{ exam.dateStart|date:"d.m" }}<br> <span class='comment'>{{ exam.dateStart|date:"l"|lower }}</span></sup></td>
+            <td class="time">{{ exam.time|time:"H" }}<sup>{{ exam.time|time:"i" }}</sup></td>
+            <td class="type">{{ exam.eventType }}</td>
+            <td class="title">{{ exam.subject }}</td>
+            <td class="teacher">{{ exam.teacher }}</td>
+            <td class="place">{{ exam.classRoom }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock content%}
   
