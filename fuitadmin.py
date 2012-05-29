@@ -1,5 +1,5 @@
 from django.contrib.admin import ModelAdmin
-from settings import TINYMCE_SETUP, TINYMCE_JS_URL 
+from settings import TINYMCE_SETUP, TINYMCE_JS_URL
 
 
 class ExtAdmin(ModelAdmin):
