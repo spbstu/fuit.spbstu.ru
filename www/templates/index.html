@@ -44,6 +44,9 @@
     <article id="global-news" class="news">
       <div class="gap">
         <h1>Объявления деканата</h1>
+        {% if perms.news.add_deansnews %}
+          <p><a href="/admin/news/deansnews/add/?back={{ flatpage.url }}">Добавить новость</a></p>
+        {% endif %}
           
           {% deans_news_list %}
     
@@ -54,6 +57,9 @@
     <article id="deans-news" class="news">
       <div class="gap">
         <h1>Новости ФУИТ</a></h1>
+        {% if perms.news.add_globalnews %}
+          <p><a href="/admin/news/globalnews/add/?back={{ flatpage.url }}">Добавить новость</a></p>
+        {% endif %}
 
         {% news_list %}
         

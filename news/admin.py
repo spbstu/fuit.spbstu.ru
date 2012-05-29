@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.http import HttpResponseRedirect
+
 from fuitadmin import ExtAdmin
 from news.models import GlobalNews, DeansNews, ProfburoNews
 
@@ -11,6 +13,12 @@ class NewsAdmin(ExtAdmin):
             'show'
             )
 
+    def response_add(self, request, obj):
+        if "back" in request.GET:
+            return HttpResponseRedirect(request.GET["back"])
+        else:
+            return ExtAdmin.response_add(self, request, obj)
+
 
 class DeansNewsAdmin(ExtAdmin):
     fields = (
@@ -20,6 +28,12 @@ class DeansNewsAdmin(ExtAdmin):
             'expired',
             'show'
             )
+
+    def response_add(self, request, obj):
+        if "back" in request.GET:
+            return HttpResponseRedirect(request.GET["back"])
+        else:
+            return ExtAdmin.response_add(self, request, obj)
 
 admin.site.register(GlobalNews, NewsAdmin)
 admin.site.register(ProfburoNews, NewsAdmin)
