@@ -2,29 +2,29 @@
 {% get_media_prefix as MEDIA_URL %}
 
 <div id="promo">
-    <div class="promo-content">
-      <ul class="carousel-content">
+    {% if c.perms.indeximages.change_indeximage %}
+        <p><a href="/admin/pages/indeximages/">Управлять элементами</a></p>
+    {% endif %}
+    <div class="promo-content carousel-viewport">
+      <ul class="carousel">
         {% for image in index_images %}
-        <li class="carousel-item"><img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.title }}" />
-        {% if image.show_text %}
-            <div class="promo-text promo_text_{{ image.text_position }}">
-                {% if image.title|safe %}
-                    <h2>Высокие стандарты обучения</h2>
+        <li class="carousel-item">
+            <div class="carousel-frame">
+                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.title }}" />
+            </div>
+            {% if image.show_text %}
+            <div class="carousel-caption promo-text-{{ image.text_position }}">
+                {% if image.title %}
+                <h2>{{ image.title|safe }}</h2>
                 {% endif %}
+                
                 {% if image.text %}
-                    {{ image.text|safe }}
+                {{ image.text|safe }}
                 {% endif %}
             </div>
-        {% endif %}
+            {% endif %}
         </li>
         {% endfor %}
       </ul>
     </div>
-    <ul class="promo-pager">
-          {% for image in index_images %}
-            <li><a href="#" {% if forloop.first %}
-                class="current"
-            {% endif %}></a></li>
-          {% endfor %}
-      </ul>
 </div>

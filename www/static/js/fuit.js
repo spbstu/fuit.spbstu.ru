@@ -1,5 +1,3 @@
-var carouselInterval = 5000;
-var carouselDuration = 1000;
 var frame;
 var weekDays = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 var today = new Date();
@@ -36,53 +34,6 @@ function showTab(targetTab) {
 		.addClass('tab-content-visible');
 	return false;
 }
-
-$.fn.carousel = function(options) {
-	var settings = $.extend({
-			loop:false,
-			autoplay: 5000,
-			transitionDuration: 1000,
-			showPager: true
-		}),
-		step,
-		count,
-		pager;
-
-	this.init = function() {
-		this.each();
-	};
-
-	return this.each(function() {
-
-	});
-};
-
-var c = $(".carousel").carousel();
-
-c.init();
-
-function carousel(el, target) {
-	var content = el.find('.carousel-content'),
-		step = content.find('.carousel-item').width(),
-		count = content.find('.carousel-item').length,
-		pager = $('.promo-pager li a');
-	if (Math.abs(parseInt(content.css('left'), 10)) < step * (count-1)) {
-		item++;
-	} else {
-		item = 0;
-	}
-	if (target) {
-		item = target;
-		clearInterval(timer);
-		timer = setInterval(function() {
-			carousel($("#promo"), false);
-		}, carouselInterval);
-	}
-	content.animate({left: '-'+step*item}, carouselDuration);
-	pager.removeClass('current');
-	pager.eq(item).addClass('current');
-}
-
 	
 /*
  * Добавление дней недели в расписание
@@ -132,6 +83,8 @@ function toggleEl(event) {
 function init() {
 	frame = ( $.browser.safari ) ? $( 'body' ) : $( 'html' );
 
+	var c = $(".carousel").carousel();
+
 /*
  * Установка кастомного хеша
  * и прокрутка страницы к верху
@@ -166,15 +119,6 @@ function init() {
 					});
 		return false;
 	});
-	
-	$('.promo-pager a').click(function() {
-		carousel($("#promo"), $(this).parent().index());
-		return false;
-	});
-	timer = setInterval(function() {
-		carousel($("#promo"), false);
-	}, carouselInterval);
-	
 /*
  * Создаём объект параметров переключателя "консультации"
  * в расписании

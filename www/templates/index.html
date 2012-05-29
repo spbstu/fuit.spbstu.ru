@@ -34,7 +34,10 @@
     <article id="global-news" class="news">
       <div class="gap">
         <h1>Объявления деканата</h1>
-          
+          {% if perms.news.add_deansnews %}
+            <p><a href="/admin/news/deansnews/add/?back={{ flatpage.url }}">Добавить объявление</a></p>
+          {% endif %}
+
           {% deans_news_list %}
     
           <p><a href="/news/">Архив новостей и объявлений</a></p>
