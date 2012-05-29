@@ -49,3 +49,27 @@ class MenuItem(models.Model):
 
     def __unicode__(self):
         return "%s -> %s" % (self.title, self.url)
+
+
+class IndexImages(models.Model):
+    title = models.CharField('Заголовок', max_length=64, null=True, blank=True)
+    image = models.ImageField("Картинка",
+        upload_to="files/index_images/")
+    text = models.TextField('Текст', null=True, blank=True)
+    text_position = models.CharField('Расположение текста',
+        max_length=10, default='left', choices=(
+            ('left', 'Слева'),
+            ('right', 'Справа'),
+            ('bottom', 'Снизу')
+            ))
+    is_active = models.BooleanField('Активна', default=True)
+
+    class Meta:
+        verbose_name = 'Картинка на главной'
+        verbose_name_plural = 'Картинки на главной'
+
+    def __unicode__(self):
+        return self.title or u'Без названия'
+
+    def show_text(self):
+        return bool(self.title) or bool(self.text)

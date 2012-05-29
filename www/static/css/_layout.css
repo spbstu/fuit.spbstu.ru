@@ -55,7 +55,6 @@ header {
  * Sub-Header
  */
 #sub-header {
-  height:324px;
   margin-bottom:18px;
   }
   #sub-header:after {
@@ -79,7 +78,7 @@ header {
   margin:0 0 0 2%;
   }
 #promo {
-  margin: 0 21%;
+  margin: 0 21% 1em;
   }
 
 /*----------------------------------------------------

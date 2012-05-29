@@ -1,0 +1,30 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+<div id="promo">
+    {% if c.perms.indeximages.change_indeximage %}
+        <p><a href="/admin/pages/indeximages/">Управлять элементами</a></p>
+    {% endif %}
+    <div class="promo-content carousel-viewport">
+      <ul class="carousel">
+        {% for image in index_images %}
+        <li class="carousel-item">
+            <div class="carousel-frame">
+                <img src="{{ MEDIA_URL }}{{ image.image }}" alt="{{ image.title }}" />
+            </div>
+            {% if image.show_text %}
+            <div class="carousel-caption promo-text-{{ image.text_position }}">
+                {% if image.title %}
+                <h2>{{ image.title|safe }}</h2>
+                {% endif %}
+                
+                {% if image.text %}
+                {{ image.text|safe }}
+                {% endif %}
+            </div>
+            {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>

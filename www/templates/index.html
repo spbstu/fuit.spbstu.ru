@@ -19,18 +19,8 @@
   
   {% coreContacts %}
 
-    <div id="promo">
-    	<div class="promo-content">
-    	  <ul>
-    	  	<li><img src="{{ STATIC_URL }}img/promo/01.jpg" alt="" />
-    	  	  <div class="promo-text">
-    	  	  	<h2>Высокие стандарты обучения</h2>
-    	  	  	<p>Основные направления обучения студентов включают в себя теорию и технологию разработки программного обеспечения, построение и поддержку баз данных и организацию и обслуживание компьютерных сетей и систем. Важной особенностью учебного плана кафедры является углубленная математическая подготовка студентов, с акцентированием использования математических дисциплин в области информационных технологий.</p>
-    	  	  </div>
-    	  	</li>
-    	  </ul>
-    	</div>
-    </div>
+  {% index_images %}
+  
   </section>
   <div id="content">
     <aside id="additional">
@@ -44,9 +34,9 @@
     <article id="global-news" class="news">
       <div class="gap">
         <h1>Объявления деканата</h1>
-        {% if perms.news.add_deansnews %}
-          <p><a href="/admin/news/deansnews/add/?back={{ flatpage.url }}">Добавить новость</a></p>
-        {% endif %}
+          {% if perms.news.add_deansnews %}
+            <p><a href="/admin/news/deansnews/add/?back={{ flatpage.url }}">Добавить объявление</a></p>
+          {% endif %}
           
           {% deans_news_list %}
     

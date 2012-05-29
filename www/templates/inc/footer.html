@@ -22,20 +22,25 @@
 <script type="text/javascript">
 	var yaform = document.createElement("script"),
 		jq = document.createElement("script"),
+		plugins_js = document.createElement("script"),
 		main_js = document.createElement("script"),
 	    s = document.body;
 
 	yaform.async = true;
 	yaform.src = "http://site.yandex.net/load/form/1/form.js";
 
-	jq.async = true;
+	jq.async = false;
 	jq.src = "http://yandex.st/jquery/1.7.2/jquery.min.js";
 
-	main_js.async = true;
+	plugins_js.async = false;
+	plugins_js.src = '{{ STATIC_URL }}js/carousel.js';
+
+	main_js.async = false;
 	main_js.src = '{{ STATIC_URL }}js/fuit.js';
 	
 	s.appendChild(yaform);
-	s.appendChild(jq);	
+	s.appendChild(jq);
+	s.appendChild(plugins_js);
 	s.appendChild(main_js);
 
 </script>

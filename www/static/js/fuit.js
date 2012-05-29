@@ -1,5 +1,3 @@
-var carouselInterval = 5000;
-var carouselDuration = 1000;
 var frame;
 var weekDays = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 var today = new Date();
@@ -36,33 +34,12 @@ function showTab(targetTab) {
 		.addClass('tab-content-visible');
 	return false;
 }
-
-function carousel(el, target) {
-	var content = el.find('.carousel-content');
-	var step = content.find('.carousel-item').width();
-	var count = content.find('.carousel-item').length;
-	var pager = $('.promo-pager li a');
-	if (Math.abs(parseInt(content.css('left'))) < step * (count-1)) {
-		item++;
-	} else {
-		item = 0;
-	}
-	if (target) {
-		item = target;
-		clearInterval(timer);
-		timer = setInterval(function() {carousel($("#promo"), false);}, carouselInterval);
-	}
-	content.animate({left: '-'+step*item}, carouselDuration);
-	pager.removeClass('current');
-	pager.eq(item).addClass('current');
-}
-
 	
 /*
  * Добавление дней недели в расписание
  * Определяем дату на основании значения в таблице
  * Определяем день недели и добавляем к имеющемуся содержимому
- * 
+ *
  * Если событие прошло - добавляем экстра-класс
  */
 
@@ -83,9 +60,9 @@ function scheduleSetExtra() {
  * Функция переключения видимости элементов
  * принимает в себя объект event, откуда дёргает event.data
  * event.data {
- * 	el: $(obj) - ссылка на целевой объект
- * 	showMsg: string - текст, отображаемая у ссылки после скрытия цели
- * 	hideMsg: string - текст, отображаемый у ссылки при видимой цели
+ *  el: $(obj) - ссылка на целевой объект
+ *  showMsg: string - текст, отображаемая у ссылки после скрытия цели
+ *  hideMsg: string - текст, отображаемый у ссылки при видимой цели
  * }
  * */
 
@@ -106,8 +83,10 @@ function toggleEl(event) {
 function init() {
 	frame = ( $.browser.safari ) ? $( 'body' ) : $( 'html' );
 
+	var c = $(".carousel").carousel();
+
 /*
- * Установка кастомного хеша 
+ * Установка кастомного хеша
  * и прокрутка страницы к верху
  */
 
@@ -140,23 +119,14 @@ function init() {
 					});
 		return false;
 	});
-	
-	$('.promo-pager a').click(function() {
-		carousel($("#promo"), $(this).parent().index());
-		return false;
-	});
-	timer = setInterval(function() {
-		carousel($("#promo"), false);
-	}, carouselInterval);
-	
 /*
  * Создаём объект параметров переключателя "консультации"
  * в расписании
  */
 	
 	var consultationToggleData = {
-			el: $('.consultation'), 
-			showMsg: 'Показать консультации', 
+			el: $('.consultation'),
+			showMsg: 'Показать консультации',
 			hideMsg: 'Скрыть консультации'
 		};
 	
@@ -182,9 +152,9 @@ function init() {
 	day.each(scheduleSetExtra);
 	
 	/*
-	 * Преобразование хеша для предотвращения
-	 * "прыжков" станицы к целевому якорю при загрузке страницы
-	 */
+     * Преобразование хеша для предотвращения
+     * "прыжков" станицы к целевому якорю при загрузке страницы
+     */
 	if (window.location.hash) {
 		return showTab(window.location.hash);
 	}
