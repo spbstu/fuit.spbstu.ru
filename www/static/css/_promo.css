@@ -48,12 +48,12 @@
     .carousel-caption  p {
       font-size: 12px;
       }
-.pager {
+.carousel-pager {
   list-style: none;
   margin: 1em 0;
   padding: 0;
   }
-.pager li {
+.carousel-pager li {
     display:inline-block;
     height:17px;
     width:17px;
@@ -63,8 +63,8 @@
     background-repeat:no-repeat;
     cursor: pointer;
     }
-    .pager .current,
-    .pager li:hover {
+    .carousel-pager .current,
+    .carousel-pager li:hover {
       background-image:url(../i/icons/dot-blue.png);
       }
 

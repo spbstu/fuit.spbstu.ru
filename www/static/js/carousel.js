@@ -16,7 +16,7 @@
                     pager;
 
                 if (settings.showPager) {
-                    pager = '<ul class="pager">';
+                    pager = '<ul class="carousel-pager">';
                     for (var i=0; i < items; i++) {
                         pager += '<li></li>';
                     }
