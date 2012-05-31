@@ -11,14 +11,14 @@ register = template.Library()
 
 @register.inclusion_tag('list.html')
 def news_list():
-    news = GlobalNews.objects.filter(show=True).order_by('date')[:5]
+    news = GlobalNews.objects.filter(show=True).order_by('-date')[:3]
     return {'news': news, 'show_date': 1}
 
 
 @register.inclusion_tag('list.html')
 def deans_news_list():
     news = DeansNews.objects.filter(show=True,
-        expired__gt=datetime.date.today()).order_by('date')
+        expired__gt=datetime.date.today()).order_by('-date')
     if (len(news) == 0):
         news = DeansNews.objects.filter(show=True).order_by('date')[:2]
     return {'news': news}
