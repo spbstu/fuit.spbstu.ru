@@ -3,6 +3,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from filebrowser.sites import site
 from django.conf import settings
+from django.views.generic.simple import redirect_to
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -26,6 +27,9 @@ urlpatterns = patterns('',
     url(r'^for-students/schedule/', include('schedule.urls')),
     url(r'^for-students/exams/(?P<group>.+)/$', 'schedule.views.exam'),
     url(r'^scientific-work/', include('scientific.urls')),
+
+    # Redirects
+    url(r'^exams/$', redirect_to, {'url': '/for-students/exams/'}),
 
     url(r'^media/(?P<path>.*)', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
