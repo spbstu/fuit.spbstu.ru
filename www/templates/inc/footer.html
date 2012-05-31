@@ -28,19 +28,7 @@
 
 	yaform.async = true;
 	yaform.src = "http://site.yandex.net/load/form/1/form.js";
-
-	jq.async = false;
-	jq.src = "http://yandex.st/jquery/1.7.2/jquery.min.js";
-
-	plugins_js.async = false;
-	plugins_js.src = '{{ STATIC_URL }}js/carousel.js';
-
-	main_js.async = false;
-	main_js.src = '{{ STATIC_URL }}js/fuit.js';
 	
 	s.appendChild(yaform);
-	s.appendChild(jq);
-	s.appendChild(plugins_js);
-	s.appendChild(main_js);
 
 </script>

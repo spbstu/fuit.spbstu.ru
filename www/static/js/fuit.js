@@ -6,7 +6,7 @@ var today = new Date();
 	if (typeof $ === 'undefined') {
 		t = setTimeout(arguments.callee, 100);
 	} else {
-		init();
+		$(init);
 	}
 })();
 
