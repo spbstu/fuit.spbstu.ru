@@ -1,8 +1,10 @@
 # -*- coding: utf8 -*-
 
+from datetime import datetime
 from django import template
 from django.db.models import Max
-from schedule.models import Groups
+from process.models import Term
+from schedule.models import Groups, Classes
 
 register = template.Library()
 
@@ -13,12 +15,16 @@ departments = [u'Компьютерные информационные техн�
 
 @register.inclusion_tag('groups_list.html')
 def groups_list(current_group=False, prefix="/for-students/schedule/"):
+    now = datetime.now()
+    groups_id = [i[0] for i in Classes.objects.filter(dateStart__lte=now.date(), dateEnd__gte=now.date()).values_list('group').order_by().distinct()]
+    all_groups = Groups.objects.filter(id__in=groups_id)
     groups = []
+
     for id, department in enumerate(departments):
         x = []
         groups.append((department, x))
-        all_groups = Groups.objects.all()
         last_year = int(all_groups.aggregate(Max('number'))['number__max'][0])
+
         for year in xrange(last_year):
             groups_by_year = []
             for group in all_groups.filter(number__regex='%s..%s/.' % (year + 1, id + 1)).order_by('number'):
