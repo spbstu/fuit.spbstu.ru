@@ -1,6 +1,9 @@
 # -*- coding: utf8 -*-
 
+from datetime import datetime
+
 from schedule.models import Groups, Classes, Exams
+from process.models import Term
 from django.shortcuts import render
 from django.template import RequestContext, Context
 
@@ -41,9 +44,14 @@ def schedule(request, group, week=None):
             'classes':[]
         }
     ]
+
+    now = datetime.now()
+
+#    current_term = Term.objects.get(term_start__gt=now.date, holidays_start__lt=now.date)
+    
     group_number = group.replace('-', '/')
     group_id = Groups.objects.get(number=group_number)
-    classes = Classes.objects.select_related().filter(group=group_id).order_by('time')
+    classes = Classes.objects.select_related().filter(group=group_id, dateStart__lte=now.date, dateEnd__gte=now.date).order_by('time')
 
     if week == 'odd':
         week_exclude = 2
