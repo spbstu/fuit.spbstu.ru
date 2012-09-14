@@ -55,9 +55,14 @@
       margin-top:2em;
       margin-bottom:0.5em;
     text-align:center;
-      background:#DEDEEE;
+      background: #9A9A9A;
+      color: #FFF;
       border-radius:1.2em;
     }
+  .schedule-today h3 {
+      background:#9A9A9A;
+      color:#000;
+      }
   .schedule-day .schedule {
       margin-left:-3em;
       }
@@ -78,8 +83,10 @@
   .schedule .title {
     font-size:1.6em;
     width:25ex;
-    color:#000;
     }
+  .schedule-today .title {
+      color: #000;
+      }
   .schedule .type {
       width:12ex;
     }

@@ -69,10 +69,14 @@ def schedule(request, group, week=None):
     schedule.title = group_number
 
     return render(request, 'schedule.html',
-        {'group': group_number,
-        'days': days,
-        'week': week,
-        'group_id': group})
+        {
+            'weekday': datetime.now().weekday(),
+            'group': group_number,
+            'days': days,
+            'week': week,
+            'group_id': group
+        }
+    )
 
 
 def exam(request, group):

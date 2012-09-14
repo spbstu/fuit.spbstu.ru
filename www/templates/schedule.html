@@ -47,9 +47,10 @@
                 Расписание четной недели
             {% endif %}
         </p>
-
         {% for day in days %}
-            <div class="schedule-day">
+            <div class="schedule-day {% if forloop.counter0 == weekday %}
+                schedule-today
+            {% endif %} ">
             <h3>{{ day.day }}</h3>
             <table class="schedule">
             {% for class in day.classes %}
@@ -58,8 +59,8 @@
                     <td class="week">{{ class.reccurance|weeks_repeat }}</td>
                     <td class="type">{{ class.eventType }}</td>
                     <td class="title">{{ class.subject }}</td>
-                    <td class="teacher">{{ class.teacher }}</td>
-                    <td class="place">{{ class.classRoom }}</td>
+                    <td class="teacher">{% if class.teacher.fullName != "-" %}{{ class.teacher }}{% else %}&nbsp;{% endif %}</td>
+                    <td class="place">{% if class.classRoom.address != "-" %}{{ class.classRoom }}{% else %}&nbsp;{% endif %}</td>
                 </tr>
             {% empty %}
                 <tr>
